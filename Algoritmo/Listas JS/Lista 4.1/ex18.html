@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex18</title>
+</head>
+<body>
+    <span>Digite a quantidade de chocolates comprado: </span>
+    <input type="text" id="ipt_qtdChoc"> <br>
+
+    <button onclick="compra()">Compra</button>
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function compra() {
+        let qtdChocolate = Number(ipt_qtdChoc.value);
+        let total = "";
+
+        if (qtdChocolate > 12) {
+            total = qtdChocolate * 2.5;
+            exibir.innerHTML = `O valor da sua compra foi de R$${total}`;
+        } else {
+            total = qtdChocolate * 3
+            exibir.innerHTML = `O valor da sua compra foi de R$${total}`;
+        } 
+    }
+</script>

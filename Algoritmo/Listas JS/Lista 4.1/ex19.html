@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex19</title>
+</head>
+<body>
+    <span>Digitte sua meta de economia: </span>
+    <input type="text" id="ipt_meta"> <br>
+    <span>Digite a quantidade de dinheiro guardada: </span>
+    <input type="text" id="ipt_qtdDin"> <br>
+
+    <button onclick="analisa()">Analisar economia</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function analisa() {
+        let meta = Number(ipt_meta.value);
+        let money = Number(ipt_qtdDin.value);
+        let msg = `Parabéns, meta alcançada! <br>`;
+
+        if (money == meta) {
+            exibir.innerHTML = msg;
+        } else {
+            if (money > meta) {
+                let total = money - meta;
+                exibir.innerHTML = msg + `Meta ultrapassada em R$${total}`;
+            } else {
+                let total = meta - money
+                exibir.innerHTML = `Força! Ainda em busca da meta! <br> Falta R$${total}`;
+            }
+        }
+    }
+</script>

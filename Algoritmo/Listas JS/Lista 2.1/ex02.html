@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex2</title>
+</head>
+<body>
+    <span>Digite o primeiro número: </span>
+    <input type="text" id="ipt_num1"> <br>
+    <span>Digite o segundo número: </span>
+    <input type="text" id="ipt_num2"> <br>
+
+    <button onclick="quoc()">Quociente</button>
+    <button onclick="rest()">Resto</button>
+    <button onclick="comp()">Completo</button>
+    
+    <div id="exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function quoc() {
+        let n1 = Number(ipt_num1.value);
+        let n2 = Number(ipt_num2.value);
+        let result = n1 / n2;
+        let resultFormatado = result.toFixed(2);
+        let msg = `A divisão de ${n1} por ${n2} é: ${resultFormatado}`;
+
+        exibir.innerHTML = msg;
+    }
+
+    function rest() {
+        let n1 = Number(ipt_num1.value);
+        let n2 = Number(ipt_num2.value);
+        let result = n1 % n2;
+        let msg = `O resto de ${n1} por ${n2} é: ${result}`;
+
+        exibir.innerHTML = msg;
+    }
+
+    function comp() {
+        let n1 = Number(ipt_num1.value);
+        let n2 = Number(ipt_num2.value);
+        let result = (n1 / n2).toFixed(2);
+        let rest = n1 % n2;
+        let msg = `A divisão de ${n1} por ${n2} é: ${result} e o resto dessa divisão: ${rest}`;
+
+        exibir.innerHTML = msg;
+    }
+</script>

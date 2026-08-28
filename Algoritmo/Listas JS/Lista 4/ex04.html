@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex4</title>
+</head>
+<body>
+    <span>Qual o valor da pizza: </span>
+    <input type="text" id="ipt_valor"> <br>
+    <span>Qual a quantidade de amigos: </span>
+    <input type="text" id="ipt_qtdAmigo"> <br>
+
+    <button onclick="pizza()">Rola a Pizza?</button>
+
+    <div id="exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function pizza() {
+        let valor = Number(ipt_valor.value);
+        let qtAmi = Number(ipt_qtdAmigo.value);
+        let total = valor / qtAmi;
+
+        let msg = `Cada amigo vai pagar R$${total.toFixed(2)} pela pizza <br>`;
+
+        if (total <= 20) {
+            exibir.innerHTML = msg
+        } else {
+            exibir.innerHTML = msg + `Deu ruim! Pizza muito cara!`
+        }
+    }
+</script>

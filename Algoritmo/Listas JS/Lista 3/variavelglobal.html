@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex3</title>
+</head>
+<body>
+    <button onclick="increment()">Incrementar</button>
+    <div id="exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    let contador = 0;
+
+    function increment() {
+        exibir.innerHTML += `Contador: ${contador} <br>`;
+        contador += 1;
+    }
+</script>

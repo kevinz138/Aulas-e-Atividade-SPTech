@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex7</title>
+</head>
+<body>
+    <span>Digite o valor da renda familiar: </span>
+    <input type="text" id="ipt_vlrFamilia"> <br>
+    <span>Digite o valor da prestação: </span>
+    <input type="text" id="ipt_prestacao"> <br>
+
+    <button onclick="verificar()">Verificar financiamento</button>
+
+    <div id="exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function verificar() {
+        let renda = Number(ipt_vlrFamilia.value);
+        let prestacao = Number(ipt_prestacao.value);
+
+        let calculo = (prestacao / renda) * 100;
+
+        exibir.innerHTML = `A prestação corresponde a ${calculo.toFixed(2)}% da renda familiar <br>`;
+
+        if (calculo > 30) {
+            exibir.innerHTML += `<b style= "color: red">Será necessário complementar a renda familiar </b>`;
+        }
+    }
+</script>

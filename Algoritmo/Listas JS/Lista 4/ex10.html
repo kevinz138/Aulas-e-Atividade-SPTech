@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex10</title>
+</head>
+<body>
+    <span>Digite a ultima série que assistiu: </span>
+    <input type="text" id="ipt_serie"> <br>
+    <span>Digite a quantidade de episódios que viu: </span>
+    <input type="text" id="ipt_qtdEp"> <br>
+
+    <button onclick="verifica()">Verificar nível</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function verifica() {
+        let serie = ipt_serie.value;
+        let qtdEp = Number(ipt_qtdEp.value);
+
+        let totalMin = qtdEp * 22;
+        let totalHora = totalMin / 60;
+
+        let msg = `Vejo que você gosta da série ${serie} <br>`;
+
+        exibir.innerHTML = msg;
+
+        if (totalHora > 30) {
+            exibir.innerHTML = msg + `Uau, você realmente gosta dessa série!`;
+        }
+    }
+</script>

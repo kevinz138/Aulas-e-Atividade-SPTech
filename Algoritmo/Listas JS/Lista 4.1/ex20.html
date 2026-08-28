@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex20</title>
+</head>
+<body>
+    <span>Digite sua frequência: </span>
+    <input type="text" id="ipt_frequencia"> <br>
+
+    <button onclick="analisa()">Analisar frequência</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function analisa() {
+        let frequencia = Number(ipt_frequencia.value)
+
+        if (frequencia < 50) {
+            exibir.innerHTML = `<img src="https://img.magnific.com/fotos-gratis/jovem-brasileiro-segurando-camera-vintage-mostrando-e-apontando-para-cima-com-os-dedos-numero-dois-enquanto-sorria-confiante-e-feliz_839833-31888.jpg?semt=ais_hybrid&w=740&q=80" alt="">`
+        } else {
+            exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwi-JBHwK09u3wyN5SFtbUC36ufKz91N3n26C-Uru2DxuxWMeTa8dptzWH&s=10" alt="">`
+        }
+    }
+</script>

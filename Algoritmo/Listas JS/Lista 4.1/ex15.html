@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex15</title>
+</head>
+<body>
+    <span>Digite a quantidade de homens que entraram no elevador: </span>
+    <input type="text" id="ipt_qtdHomem"> <br>
+    <span>Digite a quantidade de mulher que entraram no elevador: </span>
+    <input type="text" id="ipt_qtdMulher"> <br>
+
+    <button onclick="ligar()">Ligar elevador</button>
+
+    <div id="exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function ligar() {
+        let homem = Number(ipt_qtdHomem.value);
+        let mulher = Number(ipt_qtdMulher.value);
+
+        let calc = (homem * 90) + (mulher * 70);
+
+        if (calc <= 500) {
+            exibir.innerHTML += `<span style= "color: green"> Elevador vai se mover, pois está com ${calc}kg </span>`;
+        } else {
+            exibir.innerHTML += `<span style= "color: red"> Alguém precisa descer. Precisa perder Xkg para mover o elevador ${calc}kg </span>`;
+        }
+    }
+</script>

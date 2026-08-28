@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex7</title>
+</head>
+<body>
+    <span>Digite um nome do seu pet: </span>
+    <input type="text" id="ipt_pet"> <br>
+
+    <span>Digite a sua espécie: </span>
+    <input type="text" id="ipt_especie"> <br>
+
+    <button onclick="ident()">Identificar Pet</button>
+</body>
+</html>
+<script>
+    function ident() {
+        alert("O seu pet se chama "+ipt_pet.value+" e ele é um "+ ipt_especie.value);
+    }
+</script>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex5</title>
+</head>
+<body>
+    <span>Insira sua nota: </span>
+    <input type="number" id="ipt_nota"> <br>
+
+    <button onclick="avo()">Opinião de avó</button> <br>
+    <button onclick="mae()">Opinião de mãe</button>
+</body>
+</html>
+<script>
+    function avo() {
+        alert("Muito bem, que neto inteligente, porque tirou " + ipt_nota.value);
+    }
+    function mae() {
+        alert("Não fez mais que tua obrigação com essa nota " + ipt_nota.value);
+    }
+</script>

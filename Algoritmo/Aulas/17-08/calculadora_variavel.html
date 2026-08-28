@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Interpolação</title>
+</head>
+
+<body>
+    <input type="text" id="ipt_num1">
+    <input type="text" id="ipt_num2">
+    <button onclick="multiplicar()">Multiplicar</button>
+    <button onclick="dividir()">Divisão</button>
+    <button onclick="somar()">Soma</button>
+    <button onclick="subtrair()">Subtrair</button>
+    <div id="div_exibir">
+
+    </div>
+</body>
+
+</html>
+<script>
+    function multiplicar() {
+        let n1 = Number(ipt_num1.value);
+        let n2 = Number(ipt_num2.value);
+        let result = n1 * n2;
+        let msg = `O resultado da multiplicação é: ${result}`;
+
+        div_exibir.innerHTML = msg;
+    }
+
+    function dividir() {
+        let n1 = Number(ipt_num1.value);
+        let n2 = Number(ipt_num2.value);
+        let result = n1 / n2;
+        let msg = `O resultado da divisão é: ${result}`;
+
+        div_exibir.innerHTML = msg;
+    }
+
+    function somar() {
+        let n1 = Number(ipt_num1.value);
+        let n2 = Number(ipt_num2.value);
+        let result = n1 + n2;
+        let msg = `O resultado da soma é: ${result}`;
+
+        div_exibir.innerHTML = msg;
+    }
+
+    function subtrair() {
+        let n1 = Number(ipt_num1.value);
+        let n2 = Number(ipt_num2.value);
+        let result = n1 - n2;
+        let msg = `O resultado da subtração é: ${result}`;
+
+        div_exibir.innerHTML = msg;
+    }
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex6</title>
+</head>
+<body>
+    <span>Digite a quantidade de votos pro candidato A: </span>
+    <input type="text" id="ipt_candA"> <br>
+    <span>Digite a quantidade de votos pro candidato B: </span>
+    <input type="text" id="ipt_candB"> <br>
+    <span>Digite a quantidade de votos brancos: </span>
+    <input type="text" id="ipt_branco"> <br>
+    <span>Digite a quantidade de votos nulos: </span>
+    <input type="text" id="ipt_nulo"> <br>
+
+    <button onclick="eleicao()">Resultado da Eleição</button>
+
+    <div id="exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function eleicao() {
+        let candA = Number(ipt_candA.value);
+        let candB = Number(ipt_candB.value);
+        let branco = Number(ipt_branco.value);
+        let nulo = Number(ipt_nulo.value);
+
+        let total = candA + candB + branco + nulo;
+        let ngm = branco + nulo;
+        
+        let porcentA = candA / total * 100; 
+        let porcentB = candB / total * 100; 
+        let invalidos = ngm / total * 100; 
+
+        let msg = `Total de votos: ${total} Votos <br>
+        Candidato A: ${porcentA.toFixed(2)}% (${candA} Votos) <br>
+        Candidato B: ${porcentB.toFixed(2)}% (${candB} Votos) <br>
+        Candidato A: ${invalidos.toFixed(2)}% (${ngm}) Votos`
+
+        exibir.innerHTML = msg;
+    }
+</script>

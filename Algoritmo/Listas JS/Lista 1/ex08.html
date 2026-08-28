@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex8</title>
+</head>
+<body>
+    <span>Digite o nome do filme: </span>
+    <input type="text" id="ipt_filme"> <br>
+
+    <span>Digite horário da sessão: </span>
+    <input type="number" id="ipt_sessao"> <br>
+
+    <button onclick="confir()">Confirma Ingresso</button>
+</body>
+</html>
+<script>
+    function confir() {
+        alert("Ingresso confirmado para o filme "+ipt_filme.value+" no horário "+ipt_sessao.value+"h");
+    }
+</script>

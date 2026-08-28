@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex17</title>
+</head>
+<body>
+    <span>Os núemros são divisiveis?</span> <br> <br>
+
+    <span>Digite o primeiro número: </span>
+    <input type="text" id="ipt_primNumero"> <br>
+    <span>Digite o segundo número: </span>
+    <input type="text" id="ipt_segNumero"> <br>
+
+    <button onclick="testar()">Testar</button>
+
+    <div id="exibir">
+
+    </div>
+    
+</body>
+</html>
+<script>
+    function testar() {
+        let num1 = Number(ipt_primNumero.value)
+        let num2 = Number(ipt_segNumero.value)
+        
+        if (num1 % num2 === 0) {
+            exibir.innerHTML = `<img src="https://characterai.io/i/200/static/avatars/uploaded/2023/11/9/dXL8PutAjamMI7iL_HQt8hXRnXJhtN6XLgeXjd7q2GA.webp?webp=true&anim=0" alt="">`
+        } else {
+            exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrshOJbhbKJ7voKrc8vqc19EJ2enBAlEsmvp_bDEY-2Fj24Q9nE9GXzi2S&s=10" alt="">`
+        }
+    }
+</script>

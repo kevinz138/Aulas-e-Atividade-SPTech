@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex2</title>
+</head>
+<body>
+    <span>Digite o valor do deposito ou retirada: </span>
+    <input type="text" id="ipt_deposit"> <br>
+
+    <button onclick="depositar()">Depositar</button>
+    <button onclick="retirar()">Retirar</button>
+
+    <div id="exibir">
+        Saldo atual: R$0
+    </div>
+</body>
+</html>
+<script>
+    let saldo = 0
+
+    function depositar() {
+        let vlrDeposit = Number(ipt_deposit.value);
+        saldo += vlrDeposit;
+        let msg = `Depósito de R$${vlrDeposit} efetuado! Saldo atual: R$${saldo}`;
+
+        exibir.innerHTML = msg;
+    }
+
+    function retirar() {
+        let vlrRetira = Number(ipt_deposit.value);
+        saldo -= vlrRetira;
+        let msg = `Retirada de R$${vlrRetira} efetuado! Saldo atual: R$${saldo}`;
+
+        exibir.innerHTML = msg;
+    }
+</script>

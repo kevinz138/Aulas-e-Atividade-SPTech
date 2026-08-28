@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex4</title>
+</head>
+<body>
+    <span>Digite a nota da continuada: </span>
+    <input type="text" id="ipt_cont"> <br>
+    <span>Digite a nota semestral: </span>
+    <input type="text" id="ipt_sem"> <br>
+
+    <span>Digite o nome do aluno: </span>
+    <input type="text" id="ipt_nome"> <br>
+
+    <button onclick="media()">Calcule a média</button>
+
+    <div id="exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function media() {
+        let n1 = Number(ipt_cont.value);
+        let n2 = Number(ipt_sem.value);
+        let nome = ipt_nome.value;
+        let media = (n1 * 0.4) + (n2 * 0.6);
+        let msg = `A média de ${nome} será de ${media}`;
+
+        exibir.innerHTML = msg;
+    }
+</script>

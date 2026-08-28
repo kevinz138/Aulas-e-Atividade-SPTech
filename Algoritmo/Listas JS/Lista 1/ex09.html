@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex9</title>
+</head>
+<body>
+    <span>Insira à temperatura atual: </span>
+    <input type="text" id="ipt_temp"> <br>
+
+    <span>Condição do tempo: </span>
+    <input type="text" id="ipt_tempo"> <br>
+
+    <button onclick="ver()">Ver Dica</button>
+</body>
+</html>
+<script>
+    function ver() {
+        alert("Está fazendo "+ipt_temp.value+" graus e o dia está "+ipt_tempo.value);
+    }
+</script>

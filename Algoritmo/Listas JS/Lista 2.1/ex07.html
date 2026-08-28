@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex7</title>
+</head>
+<body>
+    <span>Digite o sabor da pizza: </span>
+    <input type="text" id="ipt_sabor"> <br>
+    <span>Digite o valor da pizza: </span>
+    <input type="text" id="ipt_pizza"> <br>
+    <span>Digite a quantidade de amigo que vai dividir: </span>
+    <input type="text" id="ipt_qtdAmi"> <br>
+
+    <button onclick="valor()">Ver valor por amigo</button>
+
+    <div id="exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function valor() {
+        let pizza = Number(ipt_pizza.value);
+        let amigo = Number(ipt_qtdAmi.value);
+        let sabor = ipt_sabor.value;
+
+        let calculo = (pizza * 0.1) + pizza;
+        let total = calculo / amigo;
+
+        let msg = `Cada amigo vai colaborar com R$${total.toFixed(2)} para a pizza de ${sabor}`;
+
+        exibir.innerHTML = msg;
+    }
+</script>

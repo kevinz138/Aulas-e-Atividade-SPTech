@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex4</title>
+</head>
+<body>
+    <span>Digite a sua altura: </span>
+    <input placeholder="Ex 1.86" type="text" id="ipt_alt"> <br>
+    <span>Digite o peso: </span>
+    <input placeholder="Ex 79" type="text" id="ipt_peso"> <br>
+
+    <button onclick="medir()">Calcular IMC</button>
+    <div id="exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function medir() {
+        let altur = Number(ipt_alt.value);
+        let peso = Number(ipt_peso.value);
+        let result = peso / (altur * altur);
+        let msg = `O IMC é ${result}`;
+
+        exibir.innerHTML = msg;
+    }
+</script>

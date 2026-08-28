@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex10</title>
+</head>
+<body>
+    <span>Digite à distância Percorrida: </span>
+    <input type="text" id="ipt_dist"> <br>
+
+    <span>Digite Tempo Gasto: </span>
+    <input type="number" id="ipt_temp"> <br>
+
+    <button onclick="finalizar()">Finalizar Treino</button>
+</body>
+</html>
+<script>
+    function finalizar() {
+        alert("Você percorreu "+ipt_dist.value+" km hoje!");
+        alert("O seu tempo total de exercício foi de "+ipt_temp.value+" minutos.");
+    }
+</script>

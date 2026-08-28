@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex04</title>
+</head>
+<body>
+    <span>Digite o nome da rua/avenida: </span>
+    <input type="text" id="ipt_rua"> <br>
+
+    <span>Digite o número da casa: </span>
+    <input type="number" id="ipt_num"> <br>
+
+    <button onclick="casa()">Onde eu moro</button>
+</body>
+</html>
+<script>
+    function casa() {
+        alert("Seu logradouro é "+ipt_rua.value);
+        alert("O número do seu logradouro é "+ipt_num.value);
+    }
+</script>

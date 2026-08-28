@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex12</title>
+</head>
+
+<body>
+    <span>Digite o seu saldo bancário: </span>
+    <input type="text" id="ipt_saldo"> <br>
+
+    <button onclick="verificar()">Verificar finanças</button>
+
+    <div id="exibir">
+
+    </div>
+</body>
+
+</html>
+<script>
+    function verificar() {
+        let saldo = Number(ipt_saldo.value);
+
+        if (saldo == 0) {
+            exibir.innerHTML = `Conta zerada`
+        } else {
+            if (saldo < 0) {
+                exibir.innerHTML = `Está devendo`
+            } else {
+                exibir.innerHTML = `Saldo positivo! sorriso`
+            }
+        }
+    }
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Legal</title>
+</head>
+
+<body>
+    <input type="text" id="ipt_num1">
+    <input type="text" id="ipt_num2">
+    <button onclick="multiplicar()">Multiplicar</button>
+    <button onclick="dividir()">Divisão</button>
+    <button onclick="somar()">Soma</button>
+    <button onclick="subtrair()">Subtrair</button>
+    <div id="div_exibir">
+
+    </div>
+</body>
+
+</html>
+<script>
+    function multiplicar() {
+        div_exibir.innerHTML = "O resultado da multiplicação é: " + (Number(ipt_num1.value) * Number(ipt_num2.value));
+    }
+
+    function dividir() {
+        div_exibir.innerHTML = "O resultado da divisão é: " + (Number(ipt_num1.value) / Number(ipt_num2.value));
+    }
+
+    function somar() {
+        div_exibir.innerHTML = "O resultado da adição é: " + (Number(ipt_num1.value) + Number(ipt_num2.value));
+    }
+
+    function subtrair() {
+        div_exibir.innerHTML = "O resultado da subtração é: " + (Number(ipt_num1.value) - Number(ipt_num2.value));
+    }
+</script>

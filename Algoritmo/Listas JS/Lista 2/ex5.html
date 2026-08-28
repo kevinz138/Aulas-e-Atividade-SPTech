@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex5</title>
+</head>
+<body>
+    <span>Digite o ki base: </span>
+    <input placeholder="Ex 200" type="text" id="ipt_ki"> <br>
+    <button onclick="ssj()">SSJ</button>
+    <button onclick="ssj2()">SSJ2</button>
+    <button onclick="ssj3()">SSJ3</button>
+
+    <div id="exibir">
+        
+    </div>
+</body>
+</html>
+<script>
+    function ssj() {
+        let kb = Number(ipt_ki.value) * 50;
+        let msg = `Após se transformar em SSJ, o ki desse Saiyajin passar de ${kb}`;
+
+        exibir.innerHTML = msg;
+    }
+    function ssj2() {
+        let kb = Number(ipt_ki.value) * 100;
+        let msg = `Após se transformar em SSJ2, o ki desse Saiyajin passar de ${kb}`;
+
+        exibir.innerHTML = msg;
+    }
+    function ssj3() {
+        let kb = Number(ipt_ki.value) * 200;
+        let msg = `Após se transformar em SSJ3, o ki desse Saiyajin passar de ${kb}`;
+
+        exibir.innerHTML = msg;
+    }
+</script>

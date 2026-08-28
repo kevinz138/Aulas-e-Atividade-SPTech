@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex1</title>
+</head>
+<body>
+    <span>Digite sua idade: </span>
+    <input type="text" id="ipt_idade"> <br>
+
+    <button onclick="aposent_h()">Aposentadoria Homem</button>
+    <button onclick="aposent_m()">Aposentadoria Mulher</button>
+    <div id="div_exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function aposent_h() {
+        let apstH = Number(ipt_idade.value);
+        let idadeperm = 70;
+        let msg = `Faltam ${70 - apstH} anos para se aposentar`;
+
+        div_exibir.innerHTML = msg;
+    }
+    function aposent_m() {
+        let apstM = Number(ipt_idade.value);
+        let idadeperm = 60;
+        let msg = `Faltam ${60 - apstM} anos para se aposentar`;
+
+        div_exibir.innerHTML = msg;
+    }
+</script>

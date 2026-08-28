@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex12</title>
+</head>
+
+<body>
+    <span>Digite a temperatura ambiente: </span>
+    <input type="text" id="ipt_temp"> <br>
+
+    <button onclick="verifica()">Verificar clima</button>
+
+    <div id="exibir"></div>
+</body>
+
+</html>
+<script>
+    function verifica() {
+        let temp = Number(ipt_temp.value);
+
+        if (temp < 10) {
+            exibir.innerHTML = `Apropriada p/ conservar alimento <br> <img src="https://tubarao.sc.gov.br/uploads/sites/265/2025/05/dbdd241e-38fa-4785-9e27-9f66e94b71a4-679x1024.jpg" alt="">`;
+        } else {
+            exibir.innerHTML = `Inapropriado p/ conservar alimento <br> <img src="https://st4.depositphotos.com/19042948/25070/i/450/depositphotos_250703724-stock-photo-diseases-cucumbers-tomatoes-spoiled-cucumber.jpg" alt="">`;
+        }
+    }
+</script>

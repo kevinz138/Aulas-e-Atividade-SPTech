@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex2</title>
+</head>
+<body>
+    <span>Digite a quanitdade de lata ingerida por dia: </span>
+    <input type="text" id="ipt_refri"> <br>
+    <button onclick="qtdrefri()">Quantos refri?</button>
+    <div id="exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function qtdrefri() {
+        let refri = Number(ipt_refri.value)
+        let calcAno = refri * 365;
+        if (calcAno >= 500) {
+            exibir.innerHTML = `Cuidado com a diabetes! Você ingeriu ${calcAno} latas em um ano!`;
+        } else {
+            exibir.innerHTML = `Você bebe ${calcAno} latas no ano!`;
+        }
+    }
+</script>

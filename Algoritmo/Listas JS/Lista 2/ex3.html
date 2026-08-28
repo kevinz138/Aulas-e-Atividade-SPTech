@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex3</title>
+</head>
+<body>
+    <span>Qual o valor da passagem?</span>
+    <input type="text" id="ipt_pssg"> <br>
+    <span>Fara quantas viagem por mês?</span>
+    <input type="text" id="ipt_viag"> <br>
+
+    <button onclick="economia()">Ver economia</button>
+    <div id="exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function economia() {
+        let passag = Number(ipt_pssg.value) / 2;
+        let viag = Number(ipt_viag.value);
+        let result = `Você economizará R$${passag} por mês`;
+
+        exibir.innerHTML = result;
+    }
+</script>

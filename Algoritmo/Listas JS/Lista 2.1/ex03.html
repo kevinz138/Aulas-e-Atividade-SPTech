@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex3</title>
+</head>
+<body>
+    <span>Digite o nome do aluno: </span>
+    <input type="text" id="ipt_nome"> <br>
+
+    <span>Digite valor da Ativ. Avaliativa 1: </span>
+    <input type="text" id="ipt_avali1"> <br>
+    <span>Digite valor da Ativ. Avaliativa 2: </span>
+    <input type="text" id="ipt_avali2"> <br>
+    <span>Digite valor da Ativ. Avaliativa 3: </span>
+    <input type="text" id="ipt_avali3"> <br>
+
+    <button onclick="nota()">Mostrar Nota</button>
+
+    <div id="exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function nota() {
+        let nome = ipt_nome.value;
+        let n1 = Number(ipt_avali1.value);
+        let n2 = Number(ipt_avali2.value);
+        let n3 = Number(ipt_avali3.value);
+        let media = (n1 + n2 + n3) / 3;
+        let msg = `${nome}, a média das suas atividades é: ${media}`;
+
+        exibir.innerHTML = msg;
+    }
+</script>

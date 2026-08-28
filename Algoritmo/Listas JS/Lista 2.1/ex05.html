@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex5</title>
+</head>
+<body>
+    <span>Digite a quantidade de horas dormidas: </span>
+    <input type="text" id="ipt_sono"> <br>
+
+    <button onclick="hrdorm()">Calcular Sono</button>
+
+    <div id="exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function hrdorm() {
+        let sono = Number(ipt_sono.value);
+        let a = sono * 0.05;
+        let b = sono * 0.45;
+        let c = sono * 0.30;
+        let rem = sono * 0.20;
+        let result = `Ao dormir ${sono} horas, você dormiu: <br> ${a} horas na fase 1 <br> ${b} horas na fase 2 <br> ${c} horas na fase 3 <br> ${rem} horas na fase REM`;
+
+        exibir.innerHTML = result;
+    }
+</script>

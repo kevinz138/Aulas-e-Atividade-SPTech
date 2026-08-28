@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex6</title>
+</head>
+<body>
+    <span>Digite a quantidade de KWh consumida no mês: </span>
+    <input type="text" id="ipt_qtdKwh"> <br>
+    <button onclick="calcular()">Calcular conta de luz</button>
+    <div id="exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function calcular() {
+        let quantidade = Number(ipt_qtdKwh.value);
+        let total = quantidade * 0.85;
+
+        if (quantidade < 100) {
+            alert(`Sua conta ficou em um total de R$${total * 0.9.toFixed(2)}`);
+        } else {
+            alert(`Sua conta ficou em um total de R$${total}`)
+        }
+    }
+</script>

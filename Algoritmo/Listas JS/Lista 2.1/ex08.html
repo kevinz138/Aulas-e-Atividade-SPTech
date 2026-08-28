@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex8</title>
+</head>
+<body>
+    <span>Digite o valor da passagem de ônibus: </span>
+    <input type="text" id="ipt_passoni"> <br>
+    <span>Digite a quantidade de viagens por mês: </span>
+    <input type="text" id="ipt_qtdViag"> <br>
+    <span>Digite a quantidade de Km da sua casa para o trabalho: </span>
+    <input type="text" id="ipt_km"> <br>
+
+    <button onclick="calcular()">Calcular VT</button>
+
+    <div id="exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function calcular() {
+        let pssgm = Number(ipt_passoni.value);
+        let qtdVia = Number(ipt_qtdViag.value);
+        let km = Number(ipt_km.value);
+
+        let qtdApp = qtdVia * 0.1;
+        let qtdOni = qtdVia - qtdApp;
+        
+        let calcKm = km * 0.75;
+        
+        let msg = `Você vai gastar R$${calcKm.toFixed(2)} por mês com transporte`;
+
+        exibir.innerHTML = msg;
+    }
+</script>

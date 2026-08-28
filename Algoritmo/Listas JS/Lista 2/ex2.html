@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex2</title>
+</head>
+<body>
+    <span>Qual o valor da pizza? </span>
+    <input type="text" id="ipt_pizza"> <br>
+
+    <span>Quantos vão dividir? </span>
+    <input type="text" id="ipt_dividi"> <br>
+    
+    <button onclick="lovepizza()">#lovePizza</button>
+    <div id="div_exibir">
+
+    </div>
+</body>
+</html>
+<script>
+    function lovepizza() {
+        let amg = Number(ipt_dividi.value);
+        let pizza = Number(ipt_pizza.value);
+        let result = `Cada um dos ${amg} vai pagar R$ ${pizza / amg}`;
+        
+        div_exibir.innerHTML = result;
+    }
+</script>
