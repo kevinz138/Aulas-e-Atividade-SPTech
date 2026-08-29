@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Avaliativa</title>
+</head>
+<body>
+    <span>Qual a distância que será percorrida, em quilômetros: </span>
+    <input type="text" id="ipt_distancia"> <br>
+    <span>Qual a velocidade média do carro, em quilômetros por hora: </span>
+    <input type="text" id="ipt_veloCarro"> <br>
+
+    <button onclick="simular()">Simular</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let combustivel = 25;
+
+    function simular() {
+        let distancia = Number(ipt_distancia.value);
+        let velocidade = Number(ipt_veloCarro.value);
+
+        let calcTemp = distancia / velocidade;
+        let calcCombustivel = distancia / 10;
+        let percentualGasto = (calcCombustivel / 25) * 100;
+        let combustivelRest = combustivel - calcCombustivel;
+
+        combustivel -= calcCombustivel;
+
+        let percentualRestante = (combustivel / 25) * 100;
+        
+        let msg = `Ao percorrer ${distancia}km, em velocidade média de ${velocidade}km/h, a viagem durou ${calcTemp} horas. Ao todo, foram gastos ${calcCombustivel} litros de combustível (${percentualGasto.toFixed(2)}%). Restam ${combustivel} litros de combustível (${percentualRestante.toFixed(2)}%). <br>`;
+
+        if (percentualRestante >= 30){
+            exibir.innerHTML = msg + `Continue a rodar!`;
+        } else {
+            exibir.innerHTML = `É melhor parar para reabastecer!`;
+        }
+    }
+</script>
