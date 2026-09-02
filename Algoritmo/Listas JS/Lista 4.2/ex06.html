@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex6</title>
+</head>
+<body>
+    <span>Digite um time de São Paulo: </span>
+    <input type="text" id="ipt_time"> <br>
+
+    <button onclick="verifica()">Fale sobre o time</button> <br>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function verifica() {
+        let time = ipt_time.value
+
+        if (time == 'Corinthians') {
+            exibir.innerHTML = `<span style="color: white; background-color: black"> Salve o Corinthians </span>`
+        } else if (time == 'Palmeiras') {
+            exibir.innerHTML = `<span style="color: white; background-color: green"> Salve o alviverde imponente </span>`
+        } else if (time == 'Santos') {
+            exibir.innerHTML = `<span style="color: black; background-color: white"> Agora quem dá a bola é o Santos </span>`
+        } else if (time == 'São Paulo') {
+            exibir.innerHTML = `<span style="color: red; background-color: black"> Salve o Tricolor paulista </span>`
+        } else {
+            exibir.innerHTML = `Time inválido`
+        }
+    }
+</script>

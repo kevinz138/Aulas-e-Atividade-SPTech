@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex7</title>
+</head>
+<body>
+    <span>Quantos pães franceses come por dia: </span>
+    <input type="text" id="ipt_pao"> <br>
+    <span>Quantos pacotes de bolacha come por dia: </span>
+    <input type="text" id="ipt_bolacha"> <br>
+    <span>Quantos copos de achocolatade bebe por dia: </span>
+    <input type="text" id="ipt_achocolatado"> <br>
+
+    <button onclick="verificar()">Verificar calorias</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function verificar() {
+        let pao = Number(ipt_pao.value)
+        let bolacha = Number(ipt_bolacha.value)
+        let choco = Number(ipt_achocolatado.value)
+
+        let caloPao = pao * 50
+        let caloBolacha = bolacha * 80
+        let caloChoco = choco * 70
+
+        let total = caloPao + caloBolacha + caloChoco
+
+        if (total < 200) {
+            exibi.innerHTML = `Parabéns, vai ficar em forma!`
+        } else if (total <= 400) {
+            exibir.innerHTML = `Cuidado, vai ficar menos saudável!`
+        } else {
+            exibir.innerHTML = `Alerta crítico de saúde!!!`
+        }
+    }
+</script>

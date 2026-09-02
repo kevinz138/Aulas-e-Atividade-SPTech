@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex5</title>
+</head>
+<body>
+    <span>digite a sua nota: </span>
+    <input type="text" id="ipt_nota"> <br>
+
+    <button onclick="classificar()">Classificar aluno</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function classificar() {
+        let nota = Number(ipt_nota.value)
+
+        if (nota < 5) {
+            exibir.innerHTML = `Aluno precisa de muita ajuda`
+        } else if (nota <= 7) {
+            exibir.innerHTML = `Aluno na média`
+        } else if (nota <= 9.5) {
+            exibir.innerHTML = `Aluno acima da média`
+        } else {
+            alert('Aluno fora da curva')
+        }
+    }
+</script>

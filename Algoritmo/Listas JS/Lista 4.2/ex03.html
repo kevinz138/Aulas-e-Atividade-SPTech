@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex3</title>
+</head>
+<body>
+    <span>Digite a temperatura atual: </span>
+    <input type="text" id="ipt_temp"> <br>
+
+    <button onclick="verificar()">Verificar</button> <br>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function verificar() {
+        let temp = Number(ipt_temp.value)
+
+        if (temp < 14) {
+            exibir.innerHTML = `Congelante`
+        } else if (temp <= 21) {
+            exibir.innerHTML = `Com Frio`
+        } else if (temp <= 24) {
+            exibir.innerHTML = `Confortável`
+        } else if (temp <= 31) {
+            exibir.innerHTML = `Com calor`
+        } else {
+            exibir.innerHTML = `Calor escaldante`
+        }
+    }
+</script>

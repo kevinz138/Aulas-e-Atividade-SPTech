@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex2</title>
+</head>
+<body>
+    <span>Digite a renda familiar: </span>
+    <input type="text" id="ipt_renda"> <br>
+
+    <button onclick="analisar()">Analisar Renda</button> <br>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function analisar() {
+        let renda = Number(ipt_renda.value)
+
+        if (renda <= 250) {
+            exibir.innerHTML = `Classe E`
+        } else if (renda <= 900) {
+            exibir.innerHTML = `Classe D`
+        } else if (renda <= 2500) {
+            exibir.innerHTML = `Classe C`
+        } else if (renda <= 9500) {
+            exibir.innerHTML = `Classe B`
+        } else {
+            exibir.innerHTML = `Classe A`
+        }
+    }
+</script>
