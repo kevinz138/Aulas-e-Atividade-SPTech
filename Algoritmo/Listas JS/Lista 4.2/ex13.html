@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex13</title>
+</head>
+<body>
+    <span>Digite qual pokémon inicial você quer: </span>
+    <input type="text" id="ipt_pokemon"> <br>
+
+    <button onclick="calcula()">Escolher Pokémon</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function calcula() {
+        let poke = ipt_pokemon.value
+
+        if (poke == 'Bulbasaur') {
+            exibir.innerHTML = `<img src="https://img.pokemondb.net/artwork/large/bulbasaur.jpg" alt="">`
+        } else if (poke == 'Charmander') {
+            exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ5PUBimt9PE40ZUGSFpffinnvl5_mO7e5sZZJzEd3O1DhtpX8NekWgus6&s=10" alt="">`
+        } else if (poke == 'Squirtle') {
+            exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxcJoxMKoIYBt9m410qn31Wc8ed1qADyq151HrLF0spYjBAAgRSuLYYsI&s=10" alt="">`
+        } else {
+            exibir.innerHTML = `Pokémon Inválido`
+        }
+    }
+</script>

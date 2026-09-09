@@ -17,6 +17,14 @@
 <script>
     function verificar() {
         let umi = Number(ipt_umidade.value)
-        gfgfdg
+        if (umi < 12) {
+            exibir.innerHTML = `Estado de Emergencia`
+        } else if (umi <= 20) {
+            exibir.innerHTML = `Estado de alerta`
+        } else if (umi <= 30) {
+            exibir.innerHTML = `Estado de atenção`
+        } else {
+            exibir.innerHTML = `Nenhum risco`
+        }
     }
 </script>

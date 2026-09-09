@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex12</title>
+</head>
+<body>
+    <span>Digite um número maior que zero</span>
+    <input type="text" id="ipt_numero"> <br>
+
+    <button onclick="multiplo()">Múltiplo de 5</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function multiplo() {
+        let number = Number(ipt_numero.value)
+        let resto = number % 5
+
+        if (resto == 0) {
+            exibir.innerHTML = `Perfeito, esse número é múltiplo de cinco`
+        } else if (resto == 1) {
+            exibir.innerHTML = `Vixi, sobrou um`
+        } else if (resto == 2) {
+            exibir.innerHTML = `Para esse resto é dois`
+        } else if (resto == 3) {
+            exibir.innerHTML = `Com mais dois daria certo`
+        } else {
+            exibir.innerHTML = `Só faltou 1 pra ser múltiplo de 5`
+        }
+    }
+</script>

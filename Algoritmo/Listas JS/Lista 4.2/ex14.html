@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex14</title>
+</head>
+<body>
+    <span>Digite como está se sentindo: </span>
+    <input type="text" id="ipt_humor"> <br>
+
+    <button onclick="mostra()">Mostrar Humor</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function mostra() {
+        let humor = ipt_humor.value
+
+        if (humor == 'Feliz') {
+            exibir.innerHTML = `<img src="https://st.depositphotos.com/1967477/1843/i/950/depositphotos_18438047-stock-illustration-happy-smiley-emoticon-face.jpg" alt="">`
+        } else if (humor == 'Triste') {
+            exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShmZguIZpzsZxZ7vDirnTkNKcDwUvaQaATJLbeQMGkiA&s=10" alt="">`
+        } else if (humor == 'Bravo') {
+            exibir.innerHTML = `<img src="https://www.shutterstock.com/image-illustration/3d-illustration-angry-emoticon-260nw-53719288.jpg" alt="">`
+        } else if (humor == 'Surpreso') {
+            exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXg6V4lLRhBZ4N9vAoyrWS6FHV_pG2_ihbayl2PMlD6kvCjqUITe_eL1-D&s=10" alt="">`
+        } else if (humor == 'Cansado') {
+            exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWA8Knxh5gDU7gOt7m6SfqsvdfS4pTIG49kyRHPukngQ&s=10" alt="">`
+        } else {
+
+        }
+    }
+</script>
