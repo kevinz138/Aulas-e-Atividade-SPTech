@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex10</title>
+</head>
+<body>
+    Digite a quantidade de passagem que deseja adquirir:
+    <input type="text" id="ipt_qtdPass"> <br>
+
+    <Button onclick="comprar()">Comprar</Button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function comprar() {
+        let qtdPsg = Number(ipt_qtdPass.value)
+        let valor = 4.40
+        let calc1 = valor * 0.03
+        let calc2 = valor * 0.05
+        let calc3 = valor * 0.07
+        let total = ''
+
+        if (qtdPsg >= 8 && qtdPsg <= 50) {
+            if (qtdPsg >= 8 && qtdPsg <= 19) {
+                total = (qtdPsg * (valor + cal1)).toFixed(2)
+                exibir.innerHTML = `Total a pagar: R$${total}`
+            }
+        } else {
+            alert(`Quantidade inválida para o Fidelidade!`)
+        }
+    }
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex4</title>
+</head>
+<body>
+    Qual o método de pagamento?
+
+    <select id="select_pag">
+        <option>Dinheiro</option>
+        <option>Cartão de débito</option>
+        <option>Cartão de crédito</option>
+        <option>Boleto</option>
+    </select>
+
+    <button onclick="analisar()">Analisar compra</button>
+</body>
+</html>
+<script>
+    function analisar() {
+        let pagamento = select_pag.value
+
+        if (pagamento == 'Dinheiro' || pagamento == 'Cartão de débito') {
+            alert(`Você terá que pagar a vista`)
+        } else {
+            alert(`Pagamento poderá ser parcelado`)
+        }
+    }
+</script>

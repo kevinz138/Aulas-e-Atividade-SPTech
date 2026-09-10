@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex1</title>
+</head>
+<body>
+    Qual fruta gostaria de comer?
+    <select id="select_fruta">
+        <option disabled selected value="#">Selecione uma opçãp</option>
+        <option>Uva</option>
+        <option>Abacaxi</option>
+    </select>
+
+    <button onclick="vai()">Vai comer?</button>
+</body>
+</html>
+<script>
+    function vai() {
+        let fruta = select_fruta.value
+
+        if (fruta == 'Uva' || fruta == 'Abacaxi') {
+            alert(`Sim, vai comer ${fruta}`)
+        } else {
+            alert(`A fruta ${fruta} ela não come`)
+        }
+    }
+</script>

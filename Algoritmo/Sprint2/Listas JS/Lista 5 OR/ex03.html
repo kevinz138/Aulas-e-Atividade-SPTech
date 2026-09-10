@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex3</title>
+</head>
+<body>
+    Digite a sua renda:
+    <input type="text" id="ipt_renda"> <br>
+
+    Digite renda familiar total:
+    <input type="text" id="ipt_rendaFamiliar"> <br>
+
+    <button onclick="verificar()">Terei o benefício</button>
+</body>
+</html>
+<script>
+    function verificar() {
+        let renda = Number(ipt_renda.value)
+        let rendaFamiliar = Number(ipt_rendaFammiliar.value)
+
+        if (renda <= 2000 || rendaFamiliar <= 3000) {
+            alert(`Você terá direito ao auxílio`)
+        } else {
+            alert(`Sem direito ao auxílio`)
+        }
+    }
+</script>
