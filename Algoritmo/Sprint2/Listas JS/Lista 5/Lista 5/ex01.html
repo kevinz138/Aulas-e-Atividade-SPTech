@@ -9,17 +9,17 @@
     Digite a temperatura atual:
     <input type="text" id="ipt_temp">
 
-    <button onclick=""></button>
+    <button onclick="ver()">Verificar temperatura</button>
 </body>
 </html>
 <script>
     function ver() {
         let temp = Number(ipt_temp.value)
 
-        if (nota >= 21 && temp <= 24) {
+        if (temp >= 21 && temp <= 24) {
             alert(`Temperatura confortável :D`)
         } else {
-            alert(`Temperatura DESCONFORTÁVEL :D`)
+            alert(`Temperatura DESCONFORTÁVEL :C`)
         }
     }
 </script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex5</title>
+</head>
+<body>
+    Digite a temperatura atual:
+    <input type="text" id="ipt_temp"> <br>
+    Digite a umidade do ar:
+    <input type="text" id="ipt_umi"> <br>
+    
+    <button onclick="avaliar()">Avaliar clima</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function avaliar() {
+        let temp = Number(ipt_temp.value)
+        let umi = Number(ipt_umi.value)
+
+        if (umi < 0 || umi > 100) {
+            alert(`Valor de umidade inválido`)
+            exibir.innerHTML = ``
+        } else if (temp >= 22 && temp <= 23 && umi < 60) {
+            exibir.innerHTML = `Clima agradável`
+        } else {
+            exibir.innerHTML = `Clima desconfortável`
+        }
+    }
+</script>

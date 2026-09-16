@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex5</title>
+</head>
+<body>
+    Sua documentação está válida?
+    <select id="select_documentacao">
+        <option>Sim</option>
+        <option>Não</option>
+    </select> <br>
+    Sua documentação está válida?
+    <select id="select_checkin">
+        <option>Sim</option>
+        <option>Não</option>
+    </select> <br>
+    Digite quantas horas de antecedência o passageiro chegou:
+    <input type="text" id="ipt_horas"> <br>
+
+    <button onclick="verificar()">Verificar embarque</button>
+</body>
+</html>
+<script>
+    function verificar() {
+        let doc = select_documentacao.value
+        let checkin = select_checkin.value
+        let horas = ipt_horas.value
+
+        if (doc == `Sim` && (checkin == `Sim` || horas >= 2)) {
+            alert(`Embarque liberado`)
+        } else {
+            alert(`Embarque negado`)
+        }
+    }
+</script>

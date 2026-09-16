@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex4</title>
+</head>
+<body>
+    Digite a sua idade:
+    <input type="text" id="ipt_idade"> <br>
+
+    Possui ingresso vip:
+    <select id="select_ingresso">
+        <option>Sim</option>
+        <option>Não</option>
+    </select> <br>
+
+    Possui convite especial:
+    <select id="select_convite">
+        <option>Sim</option>
+        <option>Não</option>
+    </select>
+
+    <button onclick="liberar()">Liberar acesso</button>
+</body>
+</html>
+<script>
+    function liberar() {
+        let idade = Number(ipt_idade.value)
+        let ingresso = Number(ipt_ingresso.value)
+        let convite = Number(ipt_convite.value)
+
+        if (idade >= 18 && (ingresso == `Sim` || convite == `Não`)) {
+            alert(`Acesso liberado à área VIP`)
+        } else {
+            alert(`Acesso negado`)   
+        }
+    }
+</script>

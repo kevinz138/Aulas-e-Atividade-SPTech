@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex8</title>
+</head>
+<body>
+    Digite o nome da empresa:
+    <input type="text" id="ipt_empresa"> <br>
+    Digite o valor da bolsa da empresa:
+    <input type="text" id="ipt_bolsa"> <br>
+    Digite o valor do VR da empresa:
+    <input type="text" id="ipt_vr"> <br>
+    Digite o tempo de deslocamento da empresa para a SPTech:
+    <input type="text" id="ipt_tempo"> <br>
+
+    <button onclick="preferida()">É preferida?</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function preferida() {
+        let empresa = ipt_empresa.value
+        let bolsa = ipt_bolsa.value
+        let vr = ipt_vr.value
+        let tempo = ipt_tempo.value
+
+        if (bolsa >= 1800 || vr >= 20 || tempo <= 30) {
+            exibir.innerHTML = `A empresa ${empresa} é uma de suas preferências`
+        } else {
+            exibir.innerHTML = `A empresa ${empresa} esta fora da sua lista`
+        }
+    }
+</script>

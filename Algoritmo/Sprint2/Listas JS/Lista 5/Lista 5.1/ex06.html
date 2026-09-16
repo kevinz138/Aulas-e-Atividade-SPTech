@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex6</title>
+</head>
+<body>
+    <h1>Calculadora cansaço do aluno</h1> <br><br>
+    Digite seu meio de transporte:
+    <input type="text" id="ipt_transport"> <br>
+
+    <button onclick="calcular()">Calcular cansaço</button>
+</body>
+</html>
+<script>
+    function calcular() {
+        let transporte = ipt_transport.value
+
+        if (transporte == `Carro` || transporte == `Uber`) {
+            alert(`Tá tranquilo...`)
+        } else if (transporte == `Metrô` || transporte == `Ônibus`) {
+            alert(`Um pouco cansado`)
+        } else if (transporte == `Bicicleta`) {
+            alert(`Vish... vive cansado`)
+        } else {
+            alert(`Meio de transporte inválido`)
+        }
+    }
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex6</title>
+</head>
+<body>
+    Digite a quantidade de itens comprados:
+    <input type="text" id="ipt_qtdItens"> <br>
+    Digite o valor total da compra:
+    <input type="text" id="ipt_total"> <br>
+
+    Você é programa fidelidade?
+    <select id="select_fideli">
+        <option>Sim</option>
+        <option>Não</option>
+    </select>
+
+    Digite um cupom:
+    <input type="text" id="ipt_cupom"> <br>
+
+    <button onclick="aplica()">Aplicar desconto</button>
+</body>
+</html>
+<script>
+    function aplica() {
+        let qtdItens = Number(ipt_qtdItens.value)
+        let total = Number(ipt_total.value)
+        let fideli = Number(select_fideli.value)
+        let cupom = ipt_cupom.value
+
+        if (qtdItens >= 3 && total >= 50 && (fideli == `Sim` || cupom == `PROMO10`)) {
+            alert(`Desconto aplicado!`)
+        } else {
+            alert(`Compra não elegível para desconto`)
+        }
+    }
+</script>

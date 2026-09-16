@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex7</title>
+</head>
+<body>
+    <h1>Calculadora cansaço do aluno</h1> <br><br>
+    Digite seu meio de transporte:
+    <input type="text" id="ipt_transport"> <br>
+    Digite a distância em KM:
+    <input type="text" id="ipt_km"> <br>
+
+    <button onclick="calcular()">Calcular cansaço</button>
+</body>
+</html>
+<script>
+    function calcular() {
+        let transporte = ipt_transport.value
+        let km = Number(ipt_km.value)
+
+        if (km <= 10) {
+            if (transporte == `Carro` || transporte == `Metrô` || transporte == `Ônibus`){
+                alert(`Tá tranks...`)
+            } else {
+                alert(`É... um pouco cansado...`)
+            }
+        } else if (transporte == `Carro`) {
+            alert(`É... um pouco cansado`)
+        } else if (transporte == `Metrô`) {
+            alert(`Bem cansado...`)
+        } else {
+            alert(`Vish... tá só o pó...`)
+        }
+    }
+</script>

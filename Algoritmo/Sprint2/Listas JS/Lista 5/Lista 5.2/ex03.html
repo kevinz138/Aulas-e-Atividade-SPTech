@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex3</title>
+</head>
+<body>
+    <select id="select_tipo">
+        <option>Comum</option>
+        <option>Estudante</option>
+        <option>Idoso/PNE</option>
+    </select> <br><br>
+    <select id="select_tipoPssg">
+        <option>Passagem única</option>
+        <option>Passagem integração</option>
+    </select> <br><br>
+
+    <button onclick="simular()">Simular preço</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function simular() {
+        let tipo = select_tipo.value
+        let pssg = select_tipoPssg.value
+        let valorPsgNorm = 4.4
+        let valorPsgInte = 5.9
+        let valorEstu = valorPsgNorm - valorPsgNorm * 0.5
+        let valorIntegr = valorPsgInte - valorPsgInte * 0.5
+
+        if (tipo == `Estudante` && pssg == `Passagem única`) {    
+            exibir.innerHTML = `Valor da passagem escolhida: R$${valorEstu}`
+        } else if (tipo == `Estudante` && pssg == `Passagem integração`) {
+            exibir.innerHTML = `Valor da passagem escolhida: R$${valorIntegr}`
+        } else if (tipo == `Comum` && pssg == `Passagem integração`){
+            exibir.innerHTML = `Valor da passagem escolhida: R$${valorPsgInte}`
+        } else if (tipo == `Comum` && pssg == `Passagem única`){
+            exibir.innerHTML = `Valor da passagem escolhida: R$${valorPsgNorm}`
+        } else {
+            exibir.innerHTML = `Valor da passagem escolhida é isenta`
+        }
+    }
+</script>

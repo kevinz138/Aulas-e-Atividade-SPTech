@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex3</title>
+</head>
+<body>
+    Digite a sua renda per capita familar:
+    <input type="text" id="ipt_renda"> <br>
+
+    Digite média escolar do aluno:
+    <input type="text" id="ipt_media"> <br>
+    É atleta federado:
+    <select id="select_opcao">
+        <option>Sim</option>
+        <option>Não</option>
+    </select>
+
+    <button onclick="verificar()">Terei o benefício</button>
+</body>
+</html>
+<script>
+    function verificar() {
+        let renda = Number(ipt_renda.value)
+        let media = Number(ipt_media.value)
+        let opcao = select_opcao.value
+
+        if ((renda <= 800 && media >= 8) || (opcao == `Sim` && media >= 8)) {
+            alert(`Bolsa integral concedida!`)
+        } else {
+            alert(`Bolsa não concedida`)
+        }
+    }
+</script>

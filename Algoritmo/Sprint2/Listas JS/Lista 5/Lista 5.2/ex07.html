@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex7</title>
+</head>
+<body>
+    Digite o login:
+    <input type="text" id="ipt_login"> <br>
+    Digite a senha:
+    <input type="text" id="ipt_senha"> <br>
+    Digite informação pessoal:
+    <input type="text" id="ipt_infoPessoal"> <br>
+
+    <button onclick="analisar()">Autenticar</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let contador = 3
+    
+    function analisar() {
+        let login = ipt_login.value
+        let senha = ipt_senha.value
+        let infoPessoal = ipt_infoPessoal.value
+
+        if (login == `ana` && senha == `braga` && contador > 0 && (infoPessoal == `1949` || infoPessoal == `louro josé`)) {
+            exibir.innerHTML = `Usuário autenticado`
+            contador = 3
+        } else if (contador > 0) {
+            contador -= 1
+            exibir.innerHTML = `Falha na autenticação <br>`
+            exibir.innerHTML += `Você ainda tem ${contador} tentativas`
+        } else if (contador == 0){
+            exibir.innerHTML = `Usuário BLOQUEADO! Procure seu gerente! <br>`
+        } else {
+            exibir.innerHTML = `Usuário BLOQUEADO! Procure seu gerente! <br>`
+        }
+    }
+</script>

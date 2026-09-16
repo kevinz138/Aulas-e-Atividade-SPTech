@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex1</title>
+</head>
+
+<body>
+    Digite a nota do ENEM:
+    <input type="text" id="ipt_enem"> <br>
+    Digite a nota do vestibular interno:
+    <input type="text" id="ipt_vestibular"> <br>
+    Digite a nota da redação:
+    <input type="text" id="ipt_redacao"> <br>
+
+    <button onclick="avaliar()">Avaliação</button>
+</body>
+
+</html>
+<script>
+    function avaliar() {
+        let enem = Number(ipt_enem.value)
+        let interno = Number(ipt_vestibular.value)
+        let redacao = Number(ipt_redacao.value)
+
+        if (interno >= 700 || (enem >= 650 && redacao > 0)) {
+            alert(`Aprovado!`)
+        } else {
+            alert(`Não aprovado!`)
+        }
+    }
+</script>

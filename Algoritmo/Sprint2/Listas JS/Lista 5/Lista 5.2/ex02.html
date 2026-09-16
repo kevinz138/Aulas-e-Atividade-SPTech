@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex2</title>
+</head>
+<style>
+    img {
+        width: 500px;
+    }
+</style>
+<body>
+    Digite o tamanho do celular encontrado:
+    <input type="text" id="ipt_tamanho"> <br>
+    Qual a cor do celular econtrado:
+    <select id="select_cor">
+        <option>Preto</option>
+        <option>Prata</option>
+        <option>Azul</option>
+        <option>Vermelho</option>
+    </select>
+
+    <button onclick="sera()">Será que ele gosta?</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function sera() {
+        let tamanho = Number(ipt_tamanho.value)
+        let cor = select_cor.value
+
+        if (tamanho > 6.5 && (cor == `Preto` || cor == `Prata`)) {
+            exibir.innerHTML = `<img src="https://s2-gshow.glbimg.com/GzuT2IVG7cfpcHcnBZUsT8rjVUM=/0x0:3360x2693/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_e84042ef78cb4708aeebdf1c68c6cbd6/internal_photos/bs/2018/D/i/y1VWSkRYGGKCVsNO3q2g/305303.jpg">`
+        } else {
+            exibir.innerHTML = `<img src="https://veja.abril.com.br/wp-content/uploads/2018/11/roberval1-e1541715346731.png?crop=1&resize=1212,909">`
+        }
+    }
+</script>

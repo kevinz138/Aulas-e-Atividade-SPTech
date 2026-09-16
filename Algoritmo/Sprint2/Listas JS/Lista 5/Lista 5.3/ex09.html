@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex9</title>
+</head>
+<body>
+    Informe o seu plano do aluno:
+    <select id="select_plano">
+       <option>Premium</option>
+       <option>Básico</option> 
+    </select> <br>
+
+    Digite a hora atual:
+    <input type="text" id="ipt_hora"> <br>
+
+    Possui check-in biométrico?
+    <select id="select_checkin">
+        <option>Sim</option>
+        <option>Não</option>
+    </select>
+
+    <button onclick="verificar()">Liberar catraca</button>
+</body>
+</html>
+<script>
+    function verificar() {
+        let plano = select_plano.value
+        let hora = Number(ipt_hora.value)
+        let checkin = select_checkin.value
+
+        if ((plano == `Premium`|| plano == `Básico`) && hora >= 6 && hora <= 22) {
+            alert(`Acesso liberado`)
+        } else {
+            alert(`Acesso negado`)
+        }
+    }
+</script>
