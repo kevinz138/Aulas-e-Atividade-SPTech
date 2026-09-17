@@ -140,8 +140,28 @@ INSERT INTO pessoa (nome, cpf) VALUES
 ('Kevin', '41039647820'),
 ('Gustavo', '99988877765'),
 ('Alexandriny', '99887766554'),
-('Giovanna', '98765432109'),
+('Giovanna', '98741032109'),
 ('Ana', '01234567890');
 
 INSERT INTO reserva VALUES
-(default, '2026-09-10 15:'),
+(default, '2026-09-10 15:49:34', '2026-09-15 11:30:00', '2026-09-18 14:00:00', 1),
+(default, '2026-09-11 10:15:20', '2026-09-20 14:00:00', '2026-09-25 10:00:00', 2),
+(default, '2026-09-12 18:30:45', '2026-10-01 12:00:00', '2026-10-05 11:00:00', 3),
+(default, '2026-09-13 09:05:12', '2026-10-10 15:00:00', '2026-10-12 12:00:00', 4),
+(default, '2026-09-14 21:40:00', '2026-10-15 08:30:00', '2026-10-20 18:00:00', 5);
+
+SELECT * FROM pessoa;
+SELECT * FROM reserva;
+
+SELECT p.* ,
+	r.* FROM pessoa AS p
+		JOIN reserva AS r ON fkPessoa = idPessoa
+        WHERE idPessoa = 5;
+        
+SELECT *,
+	CASE
+		WHEN cpf LIKE '%410%' THEN 'RICO'
+        ELSE 'POBRE'
+	END AS Statuss
+FROM pessoa JOIN reserva
+	ON fkPessoa = idPessoa;
