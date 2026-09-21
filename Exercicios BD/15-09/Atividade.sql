@@ -165,3 +165,169 @@ SELECT *,
 	END AS Statuss
 FROM pessoa JOIN reserva
 	ON fkPessoa = idPessoa;
+    
+-- EX4
+CREATE TABLE pessoa1 (
+    idPessoa1 INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45),
+    dtNascimento DATE
+);
+
+CREATE TABLE pessoa2 (
+    idPessoa2 INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45),
+    dtNascimento DATE,
+    fkPessoa1 INT,
+    CONSTRAINT fkPessoa2Pessoa1 FOREIGN KEY (fkPessoa1) REFERENCES pessoa1(idPessoa1)
+);
+
+INSERT INTO pessoa1 (nome, dtNascimento) VALUES
+('Adriana', '2005-03-15'),
+('Bernardo', '2002-07-22'),
+('Caio', '1998-11-05'),
+('Daniela', '2001-01-30'),
+('Eduardo', '1995-09-12');
+
+INSERT INTO pessoa2 (nome, dtNascimento, fkPessoa1) VALUES
+('Marcos', '1985-04-10', 1),
+('Patricia', '1992-08-19', 2),
+('Thiago', '1999-12-01', 3),
+('Vanessa', '1978-02-14', 4),
+('Ronaldo', '2003-06-25', 5);
+
+SELECT * FROM pessoa1;
+SELECT * FROM pessoa2;
+
+SELECT p1.idPessoa1 AS pessoa1, p2.nome AS pessoa2 
+FROM pessoa1 AS p1 
+JOIN pessoa2 AS p2 ON p1.idPessoa1 = p2.fkPessoa1;
+
+SELECT nome,
+CASE
+    WHEN dtNascimento < '2000-01-01' THEN 'Alfa'
+    ELSE 'Beta'
+END AS Dinossauros
+FROM pessoa2;
+
+SELECT nome, IFNULL(nome, 'Sem nome') AS ConsultNomes FROM pessoa1;
+
+
+-- EX5
+CREATE TABLE candidato (
+    idCandidato INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    cpf CHAR(11) NOT NULL UNIQUE
+);
+
+CREATE TABLE processo_cnh (
+    idProcesso INT PRIMARY KEY AUTO_INCREMENT,
+    categoriaPretendida VARCHAR(10) NOT NULL,
+    CONSTRAINT chk_categoriaP CHECK (categoriaPretendida IN ('A','B','AB')),
+    validadeAnos INT DEFAULT 1,
+    dtSolicitacao DATE NOT NULL,
+    fkCandidato INT UNIQUE,
+    CONSTRAINT fkProcessoCandidato FOREIGN KEY (fkCandidato) REFERENCES candidato(idCandidato)
+);
+
+INSERT INTO candidato (nome, cpf) VALUES
+('Amanda', '10120230340'),
+('Bruno', '20230340450'),
+('Carla', '30340450560'),
+('Daniel', '40450560670'),
+('Elena', '50560670780');
+
+INSERT INTO processo_cnh (categoriaPretendida, validadeAnos, dtSolicitacao, fkCandidato) VALUES
+('B', 1, '2026-01-15', 1),
+('A', 1, '2026-02-20', 2),
+('AB', 1, '2026-03-10', 3),
+('A', 1, '2026-04-05', 4),
+('B', 1, '2026-05-12', 5);
+
+SELECT * FROM processo_cnh;
+SELECT * FROM candidato;
+
+SELECT c.nome AS Nome,
+       c.cpf AS CPF,
+       p.categoriaPretendida AS Categoria,
+       p.validadeAnos AS ValidadeCNH,
+       p.dtSolicitacao AS Solicitacao
+FROM candidato AS c 
+JOIN processo_cnh AS p ON c.idCandidato = p.fkCandidato;
+
+SELECT nome,
+CASE 
+    WHEN nome LIKE 'A%' THEN 'Seu nome começa com A'
+    ELSE 'Seu nome não começa com a letra A'
+END AS Inicial
+FROM candidato;
+
+SELECT categoriaPretendida,
+IFNULL(categoriaPretendida, 'Vai escolher não?') AS categoria
+FROM processo_cnh;
+
+
+-- EX6
+CREATE TABLE endereco (
+    idEndereco INT PRIMARY KEY AUTO_INCREMENT,
+    logradouro VARCHAR(40),
+    CEP CHAR(9)
+);
+
+CREATE TABLE farmacia (
+    idFarmacia INT PRIMARY KEY AUTO_INCREMENT,
+    nomeFarmacia VARCHAR(45),
+    fkEndereco INT UNIQUE,
+    CONSTRAINT fkFarmaciaEndereco FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco)
+);
+
+CREATE TABLE farmaceutico (
+    idFarmaceutico INT PRIMARY KEY AUTO_INCREMENT,
+    nomeFarmaceutico VARCHAR(25),
+    dtNascimento DATE,
+    fkFarmacia INT,
+    CONSTRAINT fkFarmaceuticoFarmacia FOREIGN KEY (fkFarmacia) REFERENCES farmacia(idFarmacia)
+);
+
+INSERT INTO endereco (logradouro, CEP) VALUES
+('Avenida Paulista', '01310-100'),
+('Rua Augusta', '01305-000'),
+('Rua Oscar Freire', '01426-001'),
+('Avenida Faria Lima', '01452-000'),
+('Rua da Consolação', '01301-000');
+
+INSERT INTO farmacia (nomeFarmacia, fkEndereco) VALUES
+('Drogaria Vida', 1),
+('Farmácia Central', 2),
+('Drogaria São João', 3),
+('Farmácia Popular', 4),
+('Drogaria Saúde Total', 5);
+
+INSERT INTO farmaceutico (nomeFarmaceutico, dtNascimento, fkFarmacia) VALUES
+('Julio', '1995-04-12', 1),
+('Isabela', '2001-08-23', 2),
+('Rodrigo', '1988-12-05', 3),
+('Camila', '1999-03-17', 4),
+('Alisson', '1983-09-30', 5);
+
+SELECT * FROM farmaceutico;
+SELECT * FROM farmacia;
+SELECT * FROM endereco;
+
+SELECT f.nomeFarmacia AS NomeFarmacia,
+       c.nomeFarmaceutico AS NomeFarmaceutico,
+       c.dtNascimento AS dtNascimento,
+       e.logradouro AS logradouro,
+       e.CEP AS CEP
+FROM farmacia AS f
+JOIN farmaceutico AS c ON f.idFarmacia = c.fkFarmacia
+JOIN endereco AS e ON f.fkEndereco = e.idEndereco;
+
+SELECT nomeFarmaceutico,
+       dtNascimento,
+       CASE
+           WHEN dtNascimento < '2000-01-01' THEN 'Mais velho'
+           ELSE 'Mais novo'
+       END AS Faixa
+FROM farmaceutico;
+
+SELECT logradouro, IFNULL(CEP, 'Sem CEP') AS CEP FROM endereco;

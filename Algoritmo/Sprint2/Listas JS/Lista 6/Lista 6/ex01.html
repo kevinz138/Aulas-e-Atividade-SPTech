@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex1</title>
+</head>
+<body>
+    Digite uma frase:
+    <input type="text" id="ipt_frase"> <br>
+
+    <button onclick="analisar()">Analisar Frase</button> <br>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function analisar() {
+        let frase = ipt_frase.value
+        exibir.innerHTML = `Tamanho da frase: ${frase.length} <br>`
+
+        if (frase.length >= 10) {
+            exibir.innerHTML += `<span style="color: blue;">Frase longa!</span>`
+        } else {
+            exibir.innerHTML += `<span style="color: red;">Frase curta!</span>`
+        }
+    }
+</script>

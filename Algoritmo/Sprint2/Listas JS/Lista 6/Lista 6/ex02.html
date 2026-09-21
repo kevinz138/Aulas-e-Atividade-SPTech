@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex2</title>
+</head>
+<body>
+    Digite uma frase:
+    <input type="text" id="ipt_frase"> <br>
+
+    <button onclick="analisar()">Analisar Frase</button> <br>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function analisar() {
+        let frase = ipt_frase.value
+        
+        if (frase.includes("teste") || frase.includes("abc") || frase.includes("spam")) {
+            exibir.innerHTML = `<span style="color: red;">Frase Inválida</span>`
+        } else {
+            exibir.innerHTML = `<span style="color: blue";>Frase Válida!</span>`
+        }
+    }
+</script>
