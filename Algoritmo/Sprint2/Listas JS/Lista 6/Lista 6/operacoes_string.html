@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Frase:
+    <input type="text" id="input_frase" oninput="analisar()" />
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let mensagem = ''; // variável para armazenar o conteúdo da mensagem a ser exibida
+    let frase_original = input_frase.value; // armazenando a frase digitada pelo usuário
+
+
+
+    /* comprimento da frase / quantidade de caracteres */
+    let tamanho_frase = frase_original.length; // obtendo o comprimento/quantidade de caracteres da frase
+    mensagem += `Quantidade de Caracteres: <b>${tamanho_frase}</b> <br>`;
+
+    if (tamanho_frase < 8) { 
+      mensagem += `A frase NÃO POSSUI 8 caracteres <br>`;
+    } else {
+      mensagem += `A frase POSSUI ao menos 8 caracteres <br>`;
+    }
+
+
+
+    /* verificar se texto começa com ou termina com algum trecho específico */
+    let termina_com = frase_original.endsWith('.com'); // '.endsWith()' é um método nativo, que faz uma pesquisa na frase e compara se o texto TERMINA com os mesmos caracteres do trecho_pesquisado
+    mensagem += `Termina com .com? <b>${termina_com}</b> <br>`;
+
+    let termina_br = frase_original.endsWith('.br'); // '.endsWith()' é um método nativo, que faz uma pesquisa na frase e compara se o texto TERMINA com os mesmos caracteres do trecho_pesquisado
+    mensagem += `Termina com .br? <b>${termina_br}</b> <br>`;
+
+    let comeca_abc = frase_original.startsWith('ABC'); // '.startsWith()' é um método nativo, que faz uma pesquisa na frase e compara se o texto COMEÇA com os mesmos caracteres do trecho_pesquisado
+    mensagem += `Começa com ABC? <b>${comeca_abc}</b> <br>`;
+    
+    // EXEMPLO DE CARACTERES E ÍNDICES
+    // let exemplo = 'teste abc';  -> 9 caracteres
+    //                012345678    -> 9 índices/posições, começando em 0 e indo até 8
+    // DETALHE: o último índice válido sempre será o 'tamanho da frase -1', ou seja, basta obter a quantidade de caracteres e reduzir em 1 para obter o último índice da frase.
+
+    // "pneumoultramicroscopicossilicovulcanoconiótico" // length: 46
+
+    // "oi" - 2 caracteres
+    //  01  - 2 índices válidos, sempre começando de 0
+        
+    /* indexação - índices e posições de caracteres */
+    let primeira_letra = frase_original[0]; // acessa o caractere no primeiro índice da frase (começa de 0)
+    let terceira_letra = frase_original[2]; // acessa o caractere no índice '2' da frase (seria o terceiro caractere - 0, 1, 2)
+
+    let ultima_posicao = tamanho_frase - 1; // busca a última posição válida com base na quantidade de caracteres da frase
+    let ultima_letra = frase_original[ultima_posicao]; // acessa o caractere no último índice válido da frase
+
+    mensagem += `Primeira letra: <b>${primeira_letra}</b> <br>`;
+    mensagem += `Terceira letra: <b>${terceira_letra}</b> <br>`;
+    mensagem += `Última letra: <b>${ultima_letra}</b> <br>`;
+
+
+
+    /* verificar o índice de um trecho específico na frase */
+    let indice_com = frase_original.indexOf('.com'); // pesquisa o trecho '.com' na frase e retorna o índice encontrado
+    let indice_arroba = frase_original.indexOf('@'); // caso não encontre o trecho na frase, retorna o índice -1 por padrão, um índice inválido
+    let arroba_antes_com = indice_arroba < indice_com; // valida se o índice encontrado para o "@" é menor que o índice do ".com"
+    mensagem += `
+        Índice do "@"? <b>${indice_arroba}</b> <br>
+        Índice do ".com"? <b>${indice_com}</b> <br>
+        Arroba veio antes do '.com'? <b>${arroba_antes_com}</b> <br>
+    `;
+    // let frase_arroba = indice_arroba >= 0; // exemplo para validar se o índice é válido (se não retornou -1 do indexOf)
+    // mensagem += `Frase possui @? <b>${frase_arroba}</b> <br>`;
+
+
+
+    /* verificar se texto inclui algum trecho específico */
+    let frase_arroba = frase_original.includes('@'); // verifica se a frase inclui '@' em alguma parte do texto
+    mensagem += `Frase possui @? <b>${frase_arroba}</b> <br>`;
+
+
+
+    /* caixa baixa / CAIXA ALTA - '.toLowerCase()' vs '.toUpperCase()'*/
+    let frase_maiuscula = frase_original.toUpperCase(); // transforma a frase original em 'MAIÚSCULA'
+    let frase_minuscula = frase_original.toLowerCase(); // transforma a frase original em 'minúscula'
+    mensagem += `
+        Frase Original: <b>${frase_original}</b> <br>
+        FRASE CAIXA ALTA? <b>${frase_maiuscula}</b> <br>
+        frase caixa baixa? <b>${frase_minuscula}</b> <br>
+    `;
+    // DICA EXTRA: input_frase.value = input_frase.value.toUpperCase() // exemplo de como alterar o valor digitado pelo usuário para maiúsculo
+
+    /* substituição de caracteres - '.replace()' vs '.replaceAll()'*/
+    let frase_sem_primeiro_espaco = frase_original.replace(' ', '');    // substituindo APENAS O PRIMEIRO ' ' por '', removendo o espaço da frase
+    let frase_sem_espacos = frase_original.replaceAll(' ', '');         // substituindo TODOS os ' ' por '', removendo TODOS os espaços da frase
+    let frase_com_1_no_primeiro_i = frase_original.replace('I', '1');   // substituindo APENAS O PRIMEIRO 'I' por '1'
+    let frase_com_5 = frase_original.replaceAll('s', '5').replaceAll('S', '5'); // substitui TODOS os 's' por 5, na sequência substitui todos os 'S' por 5, garantindo que todos sejam substituidos, independentemente da formatação ('s' ou 'S')            
+    mensagem += `
+            Frase sem o primeiro espaço: <b>${frase_sem_primeiro_espaco}</b> <br>
+            Frase sem espaços: <b>${frase_sem_espacos}</b> <br>
+            Frase com 1 no primeiro 'I' (maiúsculo): <b>${frase_com_1_no_primeiro_i}</b> <br>
+            Frase com '5' nos 's' e 'S': <b>${frase_com_5}</b> <br>
+    `;
+        // replace() e replaceAll() recebem 2 parâmetros: o texto a ser encontrado e o que irá sobrescrevê-lo
+        // ambos são similares, porém o replace() executa a alteração somente no primeiro trecho que ele der match, enquanto o replaceAll substitui TODOS ("all").
+
+    div_mensagem.innerHTML = mensagem;
+  }
+</script>

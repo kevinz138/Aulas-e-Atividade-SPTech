@@ -18,7 +18,7 @@
     function analisar() {
         let frase = ipt_frase.value
         
-        if (frase.includes("teste") || frase.includes("abc") || frase.includes("spam")) {
+        if (frase.includes("teste").includes("abc").includes("spam")) {
             exibir.innerHTML = `<span style="color: red;">Frase Inválida</span>`
         } else {
             exibir.innerHTML = `<span style="color: blue";>Frase Válida!</span>`

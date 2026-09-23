@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex6</title>
+</head>
+<body>
+    Digite uma frase:
+    <input oninput="analisar()" type="text" id="ipt_frase"> <br>
+    Digite o numero da letra que deseja ver a posição:
+    <input type="text" id="ipt_posicao"> <br>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let numero_posicao = Number(ipt_posicao.value)
+
+    function analisar() {
+        let frase_original = ipt_frase.value
+        let ultima_letra = frase_original.length
+        let primeira_letra = frase_original[0]
+        let posicao_letra = frase_original[numero_posicao]
+
+        exibir.innerHTML = `A primeira letra é: ${primeira_letra} <br> A ${numero_posicao}° letra é: ${posicao_letra} <br> A última letra é: ${ultima_letra}`
+    }
+</script>

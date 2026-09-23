@@ -6,6 +6,30 @@
     <title>Ex3</title>
 </head>
 <body>
-    Solicite 
+    Digite uma frase:
+    <input type="text" id="ipt_frase"> <br>
+
+    Digite uma palavra:
+    <input type="text" id="ipt_palavra"> <br>
+
+    <button onclick="analisar()">Analisar Frase</button> <br>
+
+    <div id="exibir"></div>
 </body>
 </html>
+<script>
+    function analisar() {
+        let frase = ipt_frase.value
+        let palavra = ipt_palavra.value
+
+        if (frase.startsWith(palavra) && frase.endsWith(palavra)) {
+            exibir.innerHTML = `A frase começa e termina com ${palavra}!`
+        } else if (frase.startsWith(palavra)) {
+            exibir.innerHTML = `A frase começa com ${palavra}!`
+        } else if (frase.endsWith(palavra)) {
+            exibir.innerHTML = `A frase termina com ${palavra}!`
+        } else {
+            exibir.innerHTML = `A frase não começa e nem termina com ${palavra}!`
+        }
+    }
+</script>
