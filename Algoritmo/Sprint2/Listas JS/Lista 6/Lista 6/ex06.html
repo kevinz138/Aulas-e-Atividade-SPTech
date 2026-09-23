@@ -9,17 +9,16 @@
     Digite uma frase:
     <input oninput="analisar()" type="text" id="ipt_frase"> <br>
     Digite o numero da letra que deseja ver a posição:
-    <input type="text" id="ipt_posicao"> <br>
+    <input type="text" id="ipt_posicao" oninput="analisar()"> <br>
 
     <div id="exibir"></div>
 </body>
 </html>
 <script>
-    let numero_posicao = Number(ipt_posicao.value)
-
     function analisar() {
+        let numero_posicao = Number(ipt_posicao.value)
         let frase_original = ipt_frase.value
-        let ultima_letra = frase_original.length
+        let ultima_letra = frase_original[frase_original.length - 1]
         let primeira_letra = frase_original[0]
         let posicao_letra = frase_original[numero_posicao]
 
