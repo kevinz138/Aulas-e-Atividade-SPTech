@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex4</title>
+</head>
+<body>
+    Digite os nomes dos filmes que mais gosta:
+    <input type="text" id="ipt_filme"> <br>
+
+    <button onclick="cadastrar()">Cadastrar Filme</button>
+    <button onclick="favorito()">Ver Favoritos</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let lista = []
+
+    function cadastrar() {
+        let filme = ipt_filme.value
+        lista.push(filme)
+        console.log(lista)
+    }
+
+    function favorito() {
+        exibir.innerHTML = `
+        Total: ${lista.length} <br>
+        O que mais gosta é ${lista[0]} <br>
+        O que menos gosta é ${lista[lista.length - 1]}`
+    }
+</script>

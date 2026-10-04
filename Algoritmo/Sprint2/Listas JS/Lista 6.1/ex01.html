@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex1</title>
+</head>
+
+<body>
+    Valor:
+    <input type="text" id="ipt_valor"> <br>
+    <button onclick="pesquisa()">Pesquisar</button>
+    <div id="div_exibir"></div>
+</body>
+
+</html>
+<script>
+    let lista = []
+
+    function pesquisa() {
+        let valor = ipt_valor.value
+
+        if (lista.includes(valor)) {
+            let indice = lista.indexOf(valor)
+            div_exibir.innerHTML = `A fruta ${valor} existe na lista`
+        } else {
+            div_exibir.innerHTML = `A fruta ${valor} não existe na lista`
+        }
+    }
+</script>

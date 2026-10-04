@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex11</title>
+</head>
+<body>
+    Qual tabuada gostaria de ver:
+    <select id="select_tabuada">
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+    </select> <br>
+    Digite ate que número a tabuada irá:
+    <input type="text" id="ipt_qtdNumero"> <br>
+    <button onclick="tabuada()">Ver tabuada</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function tabuada() {
+        let tabuada = Number(select_tabuada.value)
+        let qtdNumero = Number(ipt_qtdNumero.value)
+        let contador = 0
+
+        while (contador < qtdNumero) {
+            contador++
+
+            if () {
+                exibir.innerHTML += `${tabuada} x ${contador} = ${tabuada * contador} <br>`
+            }
+        }
+    }
+</script>

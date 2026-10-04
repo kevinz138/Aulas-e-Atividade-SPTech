@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="select_combustivel">Qual o combustível vendido:</label>
+    <select id="select_combustivel">
+        <option>Gasolina</option>
+        <option>Etanol</option>
+        <option>Diesel</option>
+    </select> <br>
+
+    <label for="ipt_qtdVendida">Digite a quantidade de litros vendida:</label>
+    <input type="text" id="ipt_qtdVendida"> <br>
+
+    <label for="select_hrVenda">Qual o horário da venda:</label>
+    <select id="select_hrVenda">
+        <option>00</option>
+        <option>01</option>
+        <option>02</option>
+        <option>03</option>
+        <option>04</option>
+        <option>05</option>
+        <option>06</option>
+        <option>07</option>
+        <option>08</option>
+        <option>09</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>
+        <option>17</option>
+        <option>18</option>
+        <option>19</option>
+        <option>20</option>
+        <option>21</option>
+        <option>22</option>
+        <option>23</option>
+    </select>
+    <button onclick="relatorio()">Relatório de Vendas</button>
+    <button onclick="encerrar()">Encerrar o dia</button>
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let venda = 0
+    let totalRecebimento = 0
+    let totalDesconto = 0
+    let totalGasolinaLitros = 0
+    let totalEtanolLitros = 0
+    let totalDieselLitros = 0
+
+    function relatorio() {
+        let combustivel = select_combustivel.value
+        let qtdVendas = Number(ipt_qtdVendida.value)
+        let hrVenda = Number(select_hrVenda.value)
+
+        let gasolina = 6.49
+        let etanol = 4.44
+        let diesel = 4.39
+
+        let gasolinaNoite = gasolina * (1 - 0.0505)
+        let etanolNoite = etanol * (1 - 0.048)
+        let dieselNoite = diesel * (1 - 0.0303)
+
+        let totalGasolinaNoite = qtdVendas * gasolinaNoite
+        let totalEtanolNoite = qtdVendas * etanolNoite
+        let totalDieselNoite = qtdVendas * dieselNoite
+
+        let totalGasolina = qtdVendas * gasolina
+        let totalEtanol = qtdVendas * etanol
+        let totalDiesel = qtdVendas * diesel
+
+        if (combustivel == `Gasolina` && qtdVendas >= 20 && (hrVenda >= 21 || hrVenda <= 6)) {
+            let desconto = totalGasolina - totalGasolinaNoite
+            totalRecebimento += totalGasolinaNoite
+            totalDesconto += desconto
+            venda += 1
+            exibir.innerHTML += `<br> Venda ${venda}ª – Valor Recebido = R$ ${totalGasolinaNoite.toFixed(2)} – Desconto Concedido = R$ ${desconto.toFixed(2)} – Acumulado dos Recebimentos= R$ ${totalRecebimento.toFixed(2)} - Acumulado dos Descontos = R$ ${totalDesconto.toFixed(2)}<br>`
+        } else if (combustivel == `Etanol` && qtdVendas >= 20 && (hrVenda >= 21 || hrVenda <= 6)) {
+            let desconto = totalEtanol - totalEtanolNoite
+            totalRecebimento += totalEtanolNoite
+            totalDesconto += desconto
+            venda += 1
+            exibir.innerHTML += `<br> Venda ${venda}ª – Valor Recebido = R$ ${totalEtanolNoite.toFixed(2)} – Desconto Concedido = R$ ${desconto.toFixed(2)} – Acumulado dos Recebimentos= R$ ${totalRecebimento.toFixed(2)} - Acumulado dos Descontos = R$ ${totalDesconto.toFixed(2)}<br>`
+        } else if (combustivel == `Diesel` && qtdVendas >= 20 && (hrVenda >= 21 || hrVenda <= 6)) {
+            let desconto = totalDiesel - totalDieselNoite
+            totalRecebimento += totalDieselNoite
+            totalDesconto += desconto
+            venda += 1
+            exibir.innerHTML += `<br> Venda ${venda}ª – Valor Recebido = R$ ${totalDieselNoite.toFixed(2)} – Desconto Concedido = R$ ${desconto.toFixed(2)} – Acumulado dos Recebimentos= R$ ${totalRecebimento.toFixed(2)} - Acumulado dos Descontos = R$ ${totalDesconto.toFixed(2)}<br>`
+        } else if (combustivel == `Gasolina` && qtdVendas < 20 && (hrVenda < 21 && hrVenda > 6)) {
+            totalRecebimento += totalGasolina
+            venda += 1
+            exibir.innerHTML += `<br> Venda ${venda}ª – Valor Recebido = R$ ${totalGasolina.toFixed(2)} – Desconto Concedido = R$ 0,00 – Acumulado dos Recebimentos= R$ ${totalRecebimento.toFixed(2)} - Acumulado dos Descontos = R$ ${totalDesconto.toFixed(2)}<br>`
+        } else if (combustivel == `Etanol` && qtdVendas < 20 && (hrVenda < 21 && hrVenda > 6)) {
+            totalRecebimento += totalEtanol
+            venda += 1
+            exibir.innerHTML += `<br> Venda ${venda}ª – Valor Recebido = R$ ${totalEtanol.toFixed(2)} – Desconto Concedido = R$ 0,00 – Acumulado dos Recebimentos= R$ ${totalRecebimento.toFixed(2)} - Acumulado dos Descontos = R$ ${totalDesconto.toFixed(2)}<br>`
+        } else {
+            totalRecebimento += totalDiesel
+            venda += 1
+            exibir.innerHTML += `<br> Venda ${venda}ª – Valor Recebido = R$ ${totalDiesel.toFixed(2)} – Desconto Concedido = R$ 0,00 – Acumulado dos Recebimentos= R$ ${totalRecebimento.toFixed(2)} - Acumulado dos Descontos = R$ ${totalDesconto.toFixed(2)}<br>`
+        }
+
+        if (combustivel == `Gasolina`) {
+            totalGasolinaLitros += qtdVendas
+        } else if (combustivel == `Etanol`) {
+            totalEtanolLitros += qtdVendas
+        } else if (combustivel == `Diesel`) {
+            totalDieselLitros += qtdVendas
+        }
+    }
+
+    function encerrar() {
+        exibir.innerHTML = ''
+
+        let totalLitros = totalGasolinaLitros + totalEtanolLitros + totalDieselLitros
+        let percGasolina = 0
+        let percEtanol = 0
+        let percDiesel = 0
+
+        if (totalLitros > 0) {
+            percGasolina = (totalGasolinaLitros / totalLitros) * 100
+            percEtanol = (totalEtanolLitros / totalLitros) * 100
+            percDiesel = (totalDieselLitros / totalLitros) * 100
+        }
+
+        exibir.innerHTML = `
+            <br>Resumo do Faturamento<br>
+            Valor Total Recebido = R$ ${totalRecebimento.toFixed(2)}<br>
+            Valor Total dos Descontos = R$ ${totalDesconto.toFixed(2)}<br><br>
+            Quantidade de Gasolina Vendida = ${totalGasolinaLitros.toFixed(2)} litros == ${percGasolina.toFixed(1)} %<br>
+            Quantidade de Etanol Vendida = ${totalEtanolLitros.toFixed(2)} litros == ${percEtanol.toFixed(1)} %<br>
+            Quantidade de Diesel Vendida = ${totalDieselLitros.toFixed(2)} litros == ${percDiesel.toFixed(1)} %<br>
+        `
+
+        venda = 0
+        totalRecebimento = 0
+        totalDesconto = 0
+        totalGasolinaLitros = 0
+        totalEtanolLitros = 0
+        totalDieselLitros = 0
+    }
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <title>Ex2</title>
+</head>
+<body>
+    Digite o destino:
+    <input type="text" id="ipt_destino"> <br>
+
+    <button onclick="adicionar()">Adicionar</button> <br>
+    <button onclick="primeira()">Primeira Viagem</button> <br>
+    <button onclick="terceira()">Terceira Viagem</button> <br>
+    <button onclick="ultima()">Última Viagem</button> <br>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let lista = []
+
+    function adicionar() {
+        let destino = ipt_destino.value
+        lista.push(destino)
+        console.log(lista)
+    }
+
+    function primeira() {
+        let destino = ipt_destino.value
+        let primDestino = lista[0]
+
+        if (lista.length > 0) {
+            exibir.innerHTML = `Destino: ${lista[0]}`
+        } else {
+            exibir.innerHTML = `Ainda não viajou`
+        }
+    }
+
+    function terceira() {
+        let destino = ipt_destino.value
+        let primDestino = lista[2]
+
+        if (lista.length >= 3) {
+            exibir.innerHTML = `Destino: ${lista[2]}`
+        } else {
+            exibir.innerHTML = `Ainda não fez a terceira viagem`
+        }
+    }
+
+    function ultima() {
+        let destino = ipt_destino.value
+
+        if (lista.includes(destino)) {
+            exibir.innerHTML = `Destino: ${lista[lista.length - 1]}`
+        } else {
+            exibir.innerHTML = `Ainda não viajou`
+        }
+    }
+</script>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex8</title>
+</head>
+<body>
+    Digite uma letra aleatória:
+    <input type="text" id="ipt_letra"> <br>
+
+    <button onclick="verificar()">Verificar Letras</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function verificar() {
+        let palavraSecreta = 'Minecraft'
+        let letra = ipt_letra.value
+
+        if (palavraSecreta.includes(letra)) {
+            exibir.innerHTML = `A letra "${letra}" aparece na palavra secreta!`
+        } else {
+            exibir.innerHTML = `A letra "${letra}" não aparece na palavra secreta!`
+        }
+    }
+</script>

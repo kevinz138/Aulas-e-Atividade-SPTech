@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex4</title>
+</head>
+<body>
+    Digite o nome da pessoa que você mais ama:
+    <input type="text" id="ipt_nome"> <br>
+
+    Digite o número do quanto você ama essa pessoa:
+    <input type="text" id="ipt_numero"> <br>
+    <button onclick="expressar()">Expressar amor</button>
+    
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let contador = 0
+
+    function expressar() {
+        let nome = ipt_nome.value
+        let numero = Number(ipt_numero.value)
+
+        while (contador < numero) {
+            exibir.innerHTML += `${nome}, eu te amo! Sempre lembre disso! <br>`
+            contador++
+        }
+    }
+</script>

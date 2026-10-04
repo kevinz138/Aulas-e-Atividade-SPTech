@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Digite o tamanho da pista (em metros):
+    <input type="text" id="ipt_metro"> <br>
+    Quantos metros a tartaruga anda por rodada?
+    <input type="text" id="ipt_metrosTartaruga"> <br>
+    Quantos metros o coelho anda por rodada?
+    <input type="text" id="ipt_metrosCoelho"> <br>
+    A cada quantas rodadas o coelho dorme?
+    <input type="text" id="ipt_soneca"> <br>
+
+    <button onclick="largada()">Dar a Largada</button>
+
+    <div id="exibir"></div>
+</body>
+
+</html>
+<script>
+    function largada() {
+        let tamanhoPista = Number(ipt_metro.value)
+        let metrosTartaruga = Number(ipt_metrosTartaruga.value)
+        let metrosCoelho = Number(ipt_metrosCoelho.value)
+        let soneca = Number(ipt_soneca.value)
+        let msg = ``
+
+        let passoTartaruga = 0
+        let passoCoelho = 0
+        let rodada = 0
+        let totalSoneca = 0
+
+        if (tamanhoPista <= 0 || metrosTartaruga <= 0 || metrosCoelho <= 0 || soneca < 2) {
+            alert(`Valores incorretamente inseridos!`)
+        } else if (metrosTartaruga > metrosCoelho) {
+            alert(`A tartaruga não pode ser mais rápida que o coelho`)
+        } else {
+            while (passoTartaruga < tamanhoPista && passoCoelho < tamanhoPista) {
+            rodada++
+            passoTartaruga += metrosTartaruga
+
+            if (rodada % soneca == 0) {
+                msg += `Rodada ${rodada}: Tartaruga ${passoTartaruga} m | Coelho ${passoCoelho} m - Coelho dormindo (zzz...) <br>`
+                totalSoneca++
+            } else {
+                passoCoelho += metrosCoelho
+                msg += `Rodada ${rodada}: Tartaruga ${passoTartaruga} m | Coelho ${passoCoelho} m <br>`
+            }
+
+            if (passoCoelho && passoTartaruga == tamanhoPista) {
+                msg += `<br> EMPATE!`
+            } else if (passoTartaruga >= tamanhoPista) {
+                let porcentagemCoelho = passoCoelho * 100 / tamanhoPista
+                let porcentagemCoelhoSono = totalSoneca * 100 / rodada 
+                msg += `<br> Tartaruga venceu na rodada ${rodada}! <br> Coelho Soneca completou ${porcentagemCoelho.toFixed(2)}% da pista. <br> O coelho tirou ${totalSoneca} sonecas, o que representa ${porcentagemCoelhoSono.toFixed(2)}% das rodadas.`
+            } else if (passoCoelho >= tamanhoPista) {
+                let porcentagemTartaruga = passoTartaruga * 100 / tamanhoPista 
+                let porcentagemCoelhoSono = totalSoneca * 100 / rodada
+                msg += `<br> Coelho venceu na rodada ${rodada}! <br> Tartaruga completou ${porcentagemTartaruga.toFixed(2)}% da pista. <br> O coelho tirou ${totalSoneca} sonecas, o que representa ${porcentagemCoelhoSono.toFixed(2)}% das rodadas. <br> <br>`
+            }
+        }
+        }
+
+        exibir.innerHTML += msg
+    }
+</script>

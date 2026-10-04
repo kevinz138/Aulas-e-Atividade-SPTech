@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="contar()">Contar</button>
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let lista = []
+    let contador = 0
+    function contar() {
+        lista.push(contador)
+        contador += 1
+        if (lista.length <= 11) {
+            exibir.innerHTML += `${contador}<br>`
+        }
+    }
+</script>

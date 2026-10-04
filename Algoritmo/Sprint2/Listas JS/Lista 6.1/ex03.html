@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex3</title>
+</head>
+<body>
+    Digite o nome de bairros que morou:
+    <input type="text" id="ipt_bairro"> <br>
+
+    <button onclick="cadastra()">Cadastrar Bairro</button> <br>
+
+    Local em que morou:
+    <input type="text" id="ipt_local"> <br>
+
+    <button onclick="relembrar()">Relembrar moradia</button> <br>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let lista = []
+
+    function cadastra() {
+        let bairro = ipt_bairro.value
+        lista.push(bairro)
+        console.log(lista)
+    }
+
+    function relembrar() {
+        let local = Number(ipt_local.value)
+        
+        if (local > 0 && local <= lista.length) {
+            let indice = lista[local - 1];
+            exibir.innerHTML = `Seu ${local}° bairro é ${indice}`;
+        } else {
+            exibir.innerHTML = `Você ainda não morou num ${local}º bairro!`;
+        }
+    }
+</script>

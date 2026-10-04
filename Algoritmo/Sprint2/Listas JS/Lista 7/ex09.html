@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex9</title>
+</head>
+<body>
+    Digite um numero entre 0 e 200:
+    <input type="text" id="ipt_numero"> <br>
+
+    <button onclick="multiplo()">Viva o 7</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function multiplo() {
+        let contador = 0
+        let numero = Number(ipt_numero.value)
+        
+        if (numero >= 0 && numero <= 200) {
+            while (contador < numero) {
+                exibir.innerHTML += `${contador} <br>`
+                contador += 7
+            }
+        } else {
+            alert(`Digite um número permitido`)
+        }
+    }
+</script>

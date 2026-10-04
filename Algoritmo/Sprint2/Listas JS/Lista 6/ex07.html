@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex7</title>
+</head>
+<body>
+    Digite sua senha:
+    <input type="text" id="ipt_senha" oninput="analisar()"> <br>
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function analisar() {
+        let senha = ipt_senha.value
+
+        if (senha.length >= 8 && senha.toUpperCase() !== senha && senha.toLowerCase() !== senha) {
+            exibir.innerHTML = `Senha: Forte`
+        } else if ((senha.length >= 8 && senha.toUpperCase() !== senha) || (senha.length >= 8 && senha.toLowerCase() !== senha)) {
+            exibir.innerHTML = `Senha: Média`
+        } else if (senha.length >= 8 || senha.toUpperCase() !== senha || senha.toLowerCase() !== senha) {
+            exibir.innerHTML = `Senha: Fraca`
+        } else {
+            exibir.innerHTML = `Senha: Insegura`
+        }
+    }
+</script>

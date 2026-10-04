@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex2</title>
+</head>
+<body>
+    <button onclick="analisar()">Digite algo sobre a matéria de Algoritmos</button>
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let contador = 0
+
+    function analisar() {
+        let valor = prompt(`Digite uma frase`)
+
+        while (contador < 7) {
+            exibir.innerHTML += `${valor} <br>`
+            contador++
+        }
+    }
+</script>
