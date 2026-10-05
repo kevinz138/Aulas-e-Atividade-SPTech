@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex17</title>
+</head>
+<body>
+    Digite um número de elefantes:
+    <input type="text" id="ipt_numero"> <br>
+
+    <button onclick="atazanar()">Atazanar a médium</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function atazanar() {
+        let qtdElefantes = Number(ipt_numero.value)
+        let contador = 2
+        let msg = ``
+
+        while (contador <= qtdElefantes) {
+            msg += `1 elefante <b>incomoda</b> muita gente! <br>`
+
+            let repetiçãoIncomodam = ``
+            let contadorIncomodam = 0
+
+            while (contadorIncomodam < contador) {
+                repetiçãoIncomodam += `<b>incomodam,</b> `
+                contadorIncomodam++
+            }
+
+            msg += `${contador} elefantes, ${repetiçãoIncomodam}muito mais! <br><br>`
+
+            contador++
+        }
+
+        exibir.innerHTML = msg
+    }
+</script>

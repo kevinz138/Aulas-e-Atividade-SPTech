@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex12</title>
+</head>
+<body>
+    Digite um número:
+    <input type="text" id="ipt_numero"> <br>
+    Digite uma frase:
+    <input type="text" id="ipt_frase"> <br>
+
+    <button onclick="papagaio()">Papagaio Repetitivo</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function papagaio() {
+        let contador = 0
+        let numero = Number(ipt_numero.value)
+        let frase = ipt_frase.value
+        let fraseAcumulada = ``
+        let msg = ``
+
+        while (contador < numero) {
+            fraseAcumulada += frase + ` `
+            msg += `${fraseAcumulada} <br>`
+            contador++
+        }
+
+        exibir.innerHTML = msg
+    }
+</script>

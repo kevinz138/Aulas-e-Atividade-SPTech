@@ -11,16 +11,24 @@
 
     <button onclick="exibir()">Exibir rotina mensal!</button>
 
-    <div id="exibir"></div>
+    <div id="div_exibir"></div>
 </body>
 </html>
 <script>
     function exibir() {
-        let contador = 0
+        let contador = 1
+        let dias = Number(ipt_dias.value)
         let msg = ``
 
         while (contador < 30) {
-
+            if ((contador -1) % dias == 0) {
+                msg += `Dia ${contador} - Musculação <br>`
+            } else {
+                msg += `Dia ${contador} - Comer, dormir etc <br>`
+            }
+            contador++
         }
+
+        div_exibir.innerHTML = msg
     }
 </script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex14</title>
+</head>
+<body>
+    Digite um intervalo incial:
+    <input type="text" id="ipt_intervaloInicio"> <br>
+    Digite um intervalo final: 
+    <input type="text" id="ipt_intervaloFinal"> <br>
+    Digite um número teste para dividir: 
+    <input type="text" id="ipt_numeroTeste"> <br>
+
+    <button onclick="dividir()">Divisível</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function dividir() {
+        let contador = Number(ipt_intervaloInicio.value)
+        let final = Number(ipt_intervaloFinal.value)
+        let teste = Number(ipt_numeroTeste.value)
+        let msg = ``
+
+        if (teste < 3 || teste > 13) {
+            alert(`Número precisa estar entre 3 e 13`)
+        } else {
+            while (contador <= final) {
+                if (contador % teste != 0) {
+                    msg += `${contador} <br>`
+                }
+                contador++
+            }
+        }
+
+        exibir.innerHTML = msg
+    }
+</script>

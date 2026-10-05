@@ -29,13 +29,17 @@
         let tabuada = Number(select_tabuada.value)
         let qtdNumero = Number(ipt_qtdNumero.value)
         let contador = 0
+        let msg = ``
 
-        while (contador < qtdNumero) {
-            contador++
-
-            if () {
-                exibir.innerHTML += `${tabuada} x ${contador} = ${tabuada * contador} <br>`
+        while (contador <= qtdNumero) {
+            if ((tabuada * contador) % 2 == 0) {
+                msg += `<span style="color: blue">${tabuada} x ${contador} = ${tabuada * contador}</span> <br>`
+            } else {
+                msg += `<span style="color: red">${tabuada} x ${contador} = ${tabuada * contador}</span> <br>`
             }
+            contador++
         }
+
+        exibir.innerHTML = msg
     }
 </script>
