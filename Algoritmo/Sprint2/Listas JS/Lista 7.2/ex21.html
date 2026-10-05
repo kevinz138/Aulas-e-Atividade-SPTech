@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex21</title>
+  </head>
+  <body>
+    Digite o primeiro número positivo:
+    <input type="text" id="ipt_numero1"> <br>
+    Digite o segundo número:
+    <input type="text" id="ipt_numero2"> <br>
+
+
+    <button onclick="somar()">Somar Números</button>
+
+    <div id="exibir"></div>
+  </body>
+</html>
+<script>
+  function somar() {
+    let numero1 = Number(ipt_numero1.value);
+    let numero2 = Number(ipt_numero2.value);
+    let msg = ``;
+
+    if (numero1 <= 0 || numero2 < 1 || numero2 > numero1) {
+      alert(`Número tem que ser positivo e o segunda número precisa estare entre 1 e o primeiro numero`)
+    } else {
+      let total = 0
+        while (numero2 <= numero1) {
+            if (numero2 % 2 == 0) {
+                total += numero2
+                msg += `${numero2} <br>`
+            }
+            numero2++
+        }
+        msg += `<br> Soma dos pares: ${total}`
+      exibir.innerHTML = msg
+    }
+  }
+</script>

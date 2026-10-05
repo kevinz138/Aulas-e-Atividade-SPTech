@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex20</title>
+  </head>
+  <body>
+    Digite um número entre 10 e 500:
+    <input type="text" id="ipt_numero"> <br>
+
+    <button onclick="somar()">Somar Pares</button>
+
+    <div id="exibir"></div>
+  </body>
+</html>
+<script>
+  function somar() {
+    let numero = Number(ipt_numero.value);
+    let msg = ``;
+
+    if (numero < 0 || numero > 500) {
+      alert(`Número precisa estar entre 0 e 500`)
+    } else {
+      let contador = 1
+      let total = 0
+        while (contador <= numero) {
+            if (contador % 2 == 0) {
+                total += contador
+                msg += `${contador} <br>`
+            }
+            contador++
+        }
+        msg += `<br> Soma dos pares: ${total}`
+      exibir.innerHTML = msg
+    }
+  }
+</script>
