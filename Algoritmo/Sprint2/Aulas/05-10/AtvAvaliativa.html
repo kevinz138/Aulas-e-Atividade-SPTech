@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img {
+        width: 60px;
+    }
+</style>
+
+<body>
+    Digite a quantidade de Macarons desejado:
+    <input type="text" id="ipt_macaron">
+    Preço unitário:
+    <input type="text" id="ipt_precoM"> <br>
+    Digite a quantidade de Brigadeiros desejado:
+    <input type="text" id="ipt_brigadeiro">
+    Preço unitário:
+    <input type="text" id="ipt_precoB"> <br>
+    Digite a quantidade de Cupcakes desejado:
+    <input type="text" id="ipt_cupcake">
+    Preço unitário:
+    <input type="text" id="ipt_precoCup"> <br>
+    Digite a quantidade de Cheesecakes desejado:
+    <input type="text" id="ipt_cheesecake">
+    Preço unitário:
+    <input type="text" id="ipt_precoCheese"> <br>
+
+    <button onclick="verificar()">Verificar Vendas</button>
+
+    <div id="exibir"></div>
+</body>
+
+</html>
+<script>
+    function verificar() {
+        let qtdMacaron = Number(ipt_macaron.value)
+        let qtdBrigadeiro = Number(ipt_brigadeiro.value)
+        let qtdCupcake = Number(ipt_cupcake.value)
+        let qtdCheesecake = Number(ipt_cheesecake.value)
+
+        let contadorM = 0
+        let contadorB = 0
+        let contadorCup = 0
+        let contadorChe = 0
+
+        let valorMacaron = Number(ipt_precoM.value)
+        let valorBrigadeiro = Number(ipt_precoB.value)
+        let valorCupcake = Number(ipt_precoCup.value)
+        let valorCheesecake = Number(ipt_precoCheese.value)
+
+        let numeroVendas = 0
+        let totalVendas = qtdBrigadeiro + qtdCheesecake + qtdCupcake + qtdMacaron
+        let total = 0
+        let msg = ``
+
+        if (qtdMacaron >= 0 && qtdBrigadeiro >= 0 && qtdCupcake >= 0 && qtdCheesecake >= 0 && valorMacaron >= 0 && valorBrigadeiro >= 0 && valorCupcake >= 0 && valorCheesecake >= 0) {
+
+            msg += `Total de Vendas: ${totalVendas} <br> <br>`
+
+            while (contadorM < qtdMacaron || contadorB < qtdBrigadeiro || contadorCup < qtdCupcake || contadorChe < qtdCheesecake) {
+                numeroVendas++
+
+                if (contadorM < qtdMacaron) {
+                    msg += `Venda ${numeroVendas} - <img src="https://guiadacozinha.com.br/wp-content/uploads/2021/08/macaron-768x619.jpg"> - 1 <br>`
+                    total += valorMacaron
+                    contadorM++
+                } else if (contadorB < qtdBrigadeiro) {
+                    msg += `Venda ${numeroVendas} - <img src="https://guiadacozinha.com.br/wp-content/uploads/2018/10/brigadeiro-tradicional.jpg"> - 2 <br>`
+                    contadorB++
+                    total += valorBrigadeiro
+                } else if (contadorCup < qtdCupcake) {
+                    msg += `Venda ${numeroVendas} - <img src="https://guiadacozinha.com.br/wp-content/uploads/2016/12/Cupcake-de-doce-de-leite.webp"> - 3 <br>`
+                    contadorCup++
+                    total += valorCupcake
+                } else if (contadorChe < qtdCheesecake) {
+                    msg += `Venda ${numeroVendas} - <img src="https://guiadacozinha.com.br/wp-content/uploads/2016/10/cheesecake-nozes-frutas-vermelhas.jpg"> - 4 <br>`
+                    contadorChe++
+                    total += valorCheesecake
+                }
+
+                msg += `Com a quantidade de ${qtdMacaron} Macarons (${((qtdMacaron / 100) * total).toFixed(2)}% do total), ${qtdBrigadeiro} Brigadeiros (${((qtdBrigadeiro / 100) * total).toFixed(2)}% do total), ${qtdCupcake} Cupcakes (${((qtdMacaron / 100) * total).toFixed(2)}% do total) e ${qtdCheesecake} Cheesecakes (${((qtdCheesecake / 100) * total).toFixed(2)}% do total), a venda totalizará R$${total.toFixed(2)}`
+            }
+
+            exibir.innerHTML = msg
+        } else {
+            alert(`Os números não poder ser negativos ou vazios`)
+        }
+    }
+</script>

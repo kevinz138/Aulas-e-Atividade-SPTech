@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Poupança</title>
+</head>
+<body>
+    <h2>Poupança</h2>
+
+    Entre com o valor mensal de depósito: <input id="ipt_deposito" type="number"> <br>
+    Entre com a quantidade de meses: <input id="ipt_meses" type="number"> <br>
+    Entre com o percentual de juros: <input id="ipt_juros" type="number"> <br> <br>
+    Qual é o seu sonho: <input id="ipt_sonho"> <br>
+    Qual o valor do seu sonho: <input id="ipt_valorSonho" type="number">
+
+    <button onclick="projetar()">Projetar</button><br> <br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function projetar() {
+        let deposito = Number(ipt_deposito.value)
+        let meses = Number(ipt_meses.value)
+        let juros = Number(ipt_juros.value)
+        let sonho = ipt_sonho.value
+        let valorSonho = Number(ipt_sonho.value)
+
+        if (deposito < 0) {
+            alert(`Deposito não pode ser menor que 0`)
+        } else if (meses <= 0) {
+            alert(`Não existe mês 0 ou menor que 0`)
+        } else if (juros <= 0 || juros >= 10) {
+            alert(`Juros tem que ser maior que 0 e menor que 10`)
+        } else if (sonho.length < 3) {
+            alert(`Sonho tem que ter 3 ou mais caracteres`)
+        } else if () {
+            
+        }
+    }
+</script>
