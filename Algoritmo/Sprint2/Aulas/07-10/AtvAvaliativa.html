@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    O usuário informa quantos depósitos ele fez no banco.
+    <input type="text" id="ipt_qtdDeposito"> <br>
+    
+    Valor de cada depósito.
+    <input type="text" id="ipt_valorDeposito"> <br>
+
+    A cada quantos meses o bônus é aplicado.
+    <input type="text" id="ipt_bonus"> <br>
+
+    <button onclick="acompanhar()">Acompanhar grana</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function acompanhar() {
+        let qtdDepositos = Number(ipt_qtdDeposito.value)
+        let valorDeposito = Number(ipt_valorDeposito.value)
+        let bonus = Number(ipt_bonus.value)
+        
+        let contador = 0
+        let mes = 0
+        let totalDeposito = 0
+
+        while (contador < qtdDepositos) {
+            contador++
+            mes++
+            totalDeposito += valorDeposito
+
+            if (mes % bonus == 0) {
+                totalDeposito += totalDeposito * 0.01
+                exibir.innerHTML += `${mes}° Mês: R$${totalDeposito} ⭐ <br>`
+            } else {
+                exibir.innerHTML += `${mes}° Mês: R$${totalDeposito} <br>`
+            }
+        }
+        exibir.innerHTML += `Total guardado: R$${totalDeposito}`
+    }
+</script>

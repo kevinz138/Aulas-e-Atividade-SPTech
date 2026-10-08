@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Distância inicial semanal do aluno (em km).
+    <input type="text" id="ipt_distancia"> <br>
+
+    O percentual de aumento semanal desejado (de 1 a 10).
+    <input type="text" id="ipt_aumentoPercent"> <br>
+
+    A meta de distância semanal (em km).
+    <input type="text" id="ipt_meta"> <br>
+
+    O número máximo de semanas do plano.
+    <input type="text" id="ipt_numeroMaxSemanas"> <br>
+
+    <button onclick="gerar()">Gerar Planilha</button>
+
+    <div id="exibir"></div>
+</body>
+
+</html>
+<script>
+    function gerar() {
+        let distanciaInicial = Number(ipt_distancia.value)
+        let aumentoPercent = Number(ipt_aumentoPercent.value)
+        let meta = Number(ipt_meta.value)
+        let numeroMaxSemanas = Number(ipt_numeroMaxSemanas.value)
+
+        if (distanciaInicial <= 0) {
+            exibir.innerHTML = `A distância não pode ser 0 ou menos`
+        } else if (aumentoPercent < 1 || aumentoPercent > 10) {
+            exibir.innerHTML = `O percentual tem que está entre 1 e 10`
+        } else if (meta <= distanciaInicial) {
+            exibir.innerHTML = `A meta não pode ser menor que a distância`
+        } else if (numeroMaxSemanas < 1 || numeroMaxSemanas > 24) {
+            exibir.innerHTML = `A semana tem que estar entre 1 e 24`
+        } else {
+            let totalKm = 0
+            let contador = 0
+            let semana = 0
+            let total = 0
+            
+            while (contador < numeroMaxSemanas && totalKm < meta) {
+                contador++
+                semana++
+                
+                if (semana == 1) {
+                    totalKm += distanciaInicial
+                    exibir.innerHTML += `Semana ${semana} - ${totalKm.toFixed(2)} km (${(totalKm / meta * 100).toFixed(2)}%) <br>`
+                } else if (semana % 4 == 0) {
+                    let descanso = totalKm - totalKm * 0.3
+                    exibir.innerHTML += `Semana ${semana} - ${descanso.toFixed(2)} km (${(totalKm / meta * 100).toFixed(2)}%) <br>`
+                } else {
+                    totalKm += totalKm * aumentoPercent / 100
+                    exibir.innerHTML += `Semana ${semana} - ${totalKm.toFixed(2)} km (${(totalKm / meta * 100).toFixed(2)}%) <br>`
+                }
+                total += totalKm
+            }   
+            exibir.innerHTML += `Meta de ${meta} km atingida na semana ${semana}! Total acumulado no plano: ${total.toFixed(2)} km.`
+        }
+    }
+</script>
