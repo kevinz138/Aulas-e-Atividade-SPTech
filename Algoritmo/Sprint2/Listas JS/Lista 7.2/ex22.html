@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex22</title>
+  </head>
+  <body>
+    Digite o limite inferior:
+    <input type="text" id="ipt_numero1"> <br>
+    Digite o limite superior:
+    <input type="text" id="ipt_numero2"> <br>
+    Digite o número para testar divisibilidade:
+    <input type="text" id="ipt_numero3"> <br>
+
+
+    <button onclick="contar()">Contar</button>
+
+    <div id="exibir"></div>
+  </body>
+</html>
+<script>
+  function contar() {
+    let numero1 = Number(ipt_numero1.value);
+    let numero2 = Number(ipt_numero2.value);
+    let numero3 = Number(ipt_numero3.value);
+    let msg = ``;
+
+    if (numero1 <= 1 || numero2 <= numero1 || numero2 >= 100) {
+      alert(`Número tem que ser positivo e o segunda número precisa estar entre 1 e o primeiro numero`)
+    } else {
+        if (numero3 < 3 || numero3 > 10) {
+            alert(`Número tem que estar entre 1 e 10`)
+        } else {
+            let total = 0
+            let qtdExibidos = 0
+            let maior = 0
+            let menor = 0
+            while (numero1 <= numero2) {
+                if (numero1 % numero3 == 0) {
+                    total += numero1
+                    msg += `${numero1}, `
+                    qtdExibidos++
+
+                    if (qtdExibidos == 1) {
+                        menor = numero1
+                    }
+                    maior = numero1
+                }
+                numero1++
+            }
+            let totalMedia = 0
+            if (qtdExibidos > 0) {
+                totalMedia = total / qtdExibidos
+            }
+            msg += `<br><br>`;
+            msg += `QUANTIDADE TOTAL DE NÚMEROS EXIBIDOS: ${qtdExibidos}<br>`
+            msg += `SOMATÓRIO DOS NÚMEROS EXIBIDOS: ${total}<br>`
+            msg += `MÉDIA DOS NÚMEROS EXIBIDOS: ${totalMedia}<br>`
+            msg += `MAIOR NÚMERO EXIBIDO: ${maior}<br>`
+            msg += `MENOR NÚMERO EXIBIDO: ${menor}<br>`
+            exibir.innerHTML = msg
+        }
+    }
+  }
+</script>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ex18</title>
+    <title>Ex19</title>
   </head>
   <body>
     Digite um número:
@@ -23,12 +23,18 @@
       alert(`Número precisa estar entre 0 e 100`);
     } else {
       let contador = 1;
+      let qtdDivisor = 0
       let msg = `Divisores do Número ${numero}: <br><br>`;
       while (contador <= numero) {
         if (numero % contador == 0) {
           msg += `${contador} <br>`;
+          qtdDivisor++
         }
         contador++;
+      }
+
+      if (qtdDivisor == 2) {
+        msg += `<br> O número ${numero} é primo`
       }
       exibir.innerHTML = msg;
     }
