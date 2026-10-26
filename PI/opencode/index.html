@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="calculator" id="calculator">
+    <header class="titlebar">
+      <span class="app-title">Calculadora</span>
+      <nav class="mode-switch" aria-label="Modo da calculadora">
+        <button class="mode-btn active" data-mode="standard">Padrão</button>
+        <button class="mode-btn" data-mode="scientific">Científica</button>
+      </nav>
+    </header>
+
+    <section class="display">
+      <span class="badge badge-angle" id="angleBadge" hidden>Deg</span>
+      <span class="badge badge-memory" id="memoryBadge" hidden>M</span> 
+      <div class="history" id="history"></div>
+      <div class="result" id="result">0</div>
+    </section>
+
+    <div class="keypads">
+      <section class="keypad scientific-keypad" id="scientificKeypad" hidden>
+        <div class="memory-row">
+          <button class="btn fn" data-memory="mc">MC</button>
+          <button class="btn fn" data-memory="mr">MR</button>
+          <button class="btn fn" data-memory="ms">MS</button>
+          <button class="btn fn" data-memory="mplus">M+</button>
+          <button class="btn fn" data-memory="mminus">M−</button>
+        </div>
+        <div class="sci-grid">
+          <button class="btn fn" data-unary="sin">sin</button>
+          <button class="btn fn" data-unary="cos">cos</button>
+          <button class="btn fn" data-unary="tan">tan</button>
+          <button class="btn fn" data-unary="ln">ln</button>
+          <button class="btn fn" data-unary="log">log</button>
+          <button class="btn fn" data-unary="asin">sin⁻¹</button>
+          <button class="btn fn" data-unary="acos">cos⁻¹</button>
+          <button class="btn fn" data-unary="atan">tan⁻¹</button>
+          <button class="btn fn" data-unary="sinh">sinh</button>
+          <button class="btn fn" data-unary="tanh">tanh</button>
+          <button class="btn fn" data-operator="x^y">x<sup>y</sup></button>
+          <button class="btn fn" data-operator="y√x">y√x</button>
+          <button class="btn fn" data-unary="square">x²</button>
+          <button class="btn fn" data-unary="cube">x³</button>
+          <button class="btn fn" data-unary="reciprocal">1/x</button>
+          <button class="btn fn" data-unary="exp10">10ˣ</button>
+          <button class="btn fn" data-unary="exp">eˣ</button>
+          <button class="btn fn" data-unary="factorial">x!</button>
+          <button class="btn fn" data-constant="pi">π</button>
+          <button class="btn fn" data-constant="e">e</button>
+          <button class="btn fn" data-action="ee">EE</button>
+          <button class="btn fn" data-action="fe">F-E</button>
+          <button class="btn fn" data-action="deg">Deg</button>
+          <button class="btn fn" data-operator="mod">Mod</button>
+          <button class="btn fn" data-action="rand">Rand</button>
+        </div>
+      </section>
+
+      <section class="keypad standard-keypad">
+        <div class="std-grid">
+          <button class="btn fn" data-action="percent">%</button>
+          <button class="btn fn" data-action="clearEntry">CE</button>
+          <button class="btn fn" data-action="clear">C</button>
+          <button class="btn fn" data-action="backspace" aria-label="Backspace">⌫</button>
+          <button class="btn fn" data-unary="reciprocal">1/x</button>
+          <button class="btn fn" data-unary="square">x²</button>
+          <button class="btn fn" data-unary="sqrt">√</button>
+          <button class="btn op" data-operator="÷">÷</button>
+          <button class="btn digit" data-digit="7">7</button>
+          <button class="btn digit" data-digit="8">8</button>
+          <button class="btn digit" data-digit="9">9</button>
+          <button class="btn op" data-operator="×">×</button>
+          <button class="btn digit" data-digit="4">4</button>
+          <button class="btn digit" data-digit="5">5</button>
+          <button class="btn digit" data-digit="6">6</button>
+          <button class="btn op" data-operator="-">−</button>
+          <button class="btn digit" data-digit="1">1</button>
+          <button class="btn digit" data-digit="2">2</button>
+          <button class="btn digit" data-digit="3">3</button>
+          <button class="btn op" data-operator="+">+</button>
+          <button class="btn fn" data-action="negate">±</button>
+          <button class="btn digit" data-digit="0">0</button>
+          <button class="btn digit" data-action="dot">.</button>
+          <button class="btn equals" data-action="equals">=</button>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
