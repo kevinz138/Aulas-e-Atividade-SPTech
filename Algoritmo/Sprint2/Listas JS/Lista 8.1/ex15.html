@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex15</title>
+</head>
+<body>
+    Digite um intervalo incial:
+    <input type="text" id="ipt_intervaloInicio"> <br>
+    Digite um intervalo final: 
+    <input type="text" id="ipt_intervaloFinal"> <br>
+
+    <button onclick="curtir()">Curto 3 e 5</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function curtir() {
+        let inicial = Number(ipt_intervaloInicio.value)
+        let final = Number(ipt_intervaloFinal.value)
+        let msg = ``
+
+        for (let i = inicial; i <= final; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                msg += `É TRI! É PENTA <br>`
+            } else if (i % 5 == 0) {
+                msg += `É PENTA! <br>`
+            } else if (i % 3 == 0) {
+                msg += `É TRI!<br>`
+            } else {
+                msg += `${i} <br>`
+            }
+        }
+
+        exibir.innerHTML = msg
+    }
+</script>
