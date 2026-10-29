@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Batalha em Impel Down do Luffy</h1>
+
+    Digite a quantidade de batalhas para:
+    <input type="text" id="ipt_qtdBatalhas"> <br>
+    Digite a quantidade de marinheiros em cada batalha:
+    <input type="text" id="ipt_qtdMarinheiro"> <br>
+    Digite a quantidade de carnes disponíveis:
+    <input type="text" id="ipt_qtdCarnes"> <br>
+
+    <button onclick="batalha()">Iniciar Batalha</button>
+
+    <div id="exibir"></div>
+</body>
+
+</html>
+<script>
+    function batalha() {
+        let qtdBatalhas = Number(ipt_qtdBatalhas.value)
+        let qtdMarinheiro = Number(ipt_qtdMarinheiro.value)
+        let qtdCarnes = Number(ipt_qtdCarnes.value)
+
+        let marinheirosDerrotados = 0
+
+        let energia = 100
+
+        let derrota = 0
+
+        if (qtdBatalhas <= 0) {
+            alert(`Quantidades de batalhas inválidas`)
+        } else if (qtdMarinheiro <= 0) {
+            alert(`Quantidade de marinheiros inválidas`)
+        } else {
+            for (let i = 1; i <= qtdBatalhas && energia >= 10; i++) {
+                if (energia < 10 && qtdCarnes > 0) {
+                    qtdCarnes--
+                    energia = 100
+                }
+
+                energia -= 10
+
+                for (let j = 1; j <= qtdMarinheiro || energia >= 5; j++) {
+                    if (energia < 5 && qtdCarnes > 0) {
+                        qtdCarnes--
+                        energia = 100
+                    } else {
+                        qtdBatalhas = 0
+                    }
+                    energia -= 5
+                    marinheirosDerrotados++
+                }
+            }
+            if (qtdMarinheiro == marinheirosDerrotados) {
+                exibir.innerHTML = `Resultado: Luffy saiu derrotado! Sobraram ${qtdMarinheiro - marinheirosDerrotados} <br> 
+                    Quantidade de carnes restantes: ${qtdCarnes} 
+                    <br> Quantidade de marinheiros derrotados: ${marinheirosDerrotados} <br> 
+                    Energia restante ao final das batalhas: ${energia} <br>`
+            } else {
+                exibir.innerHTML = `Resultado: Luffy saiu vitorioso! <br> 
+                    Quantidade de carnes restantes: ${qtdCarnes} 
+                    <br> Quantidade de marinheiros derrotados: ${marinheirosDerrotados} <br> 
+                    Energia restante ao final das batalhas: ${energia} <br>`
+            }
+
+        }
+    }
+</script>
