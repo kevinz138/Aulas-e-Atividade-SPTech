@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex7</title>
+</head>
+<body>
+    Digite o preço do produto:
+    <input type="text" id="ipt_preco"> <br>
+
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <button onclick="atualizar()">Atualizar Estoque</button>
+    
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let produtos = []
+
+    function cadastrar() {
+        let preco = Number(ipt_preco.value)
+        produtos.push(preco)
+    }
+
+    function atualizar() {
+        let total = 0
+        exibir.innerHTML = ''
+        for (let i = produtos.length - 1; i >= 0; i--) {
+            exibir.innerHTML += `${produtos [i]} <br>`
+            total += produtos[i]
+        }
+
+        exibir.innerHTML += `Você tem ${produtos.length} cadastrados em estoque <br>`
+        exibir.innerHTML += `Seu estoque vale R$${total}`
+    }
+</script>

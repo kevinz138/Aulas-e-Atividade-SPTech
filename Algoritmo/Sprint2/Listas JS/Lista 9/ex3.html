@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex3</title>
+</head>
+<body>
+    Digite um número:
+    <input type="text" id="ipt_numero">
+    <button onclick="cadastrar()">Cadastrar</button> <br>
+
+    <button onclick="indicepar()">Ver Valores Pares</button>
+    <button onclick="par()">Ver Índices Pares</button>
+    <button onclick="todos()">Ver Todos</button>
+
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let numeros = []
+    function cadastrar() {
+        let numero = Number(ipt_numero.value)
+        numeros.push(numero)
+    }
+
+    function indicepar() {
+        exibir.innerHTML = ``
+        for (let i = 0; i < numeros.length; i++) {
+            if (i % 2 == 0) {
+                exibir.innerHTML += `${numeros[i]} <br>`
+            }
+        }
+    }
+
+    function par() {
+        exibir.innerHTML = ``
+        for (let j = 0; j < numeros.length; j++) {
+            if (numeros[j] % 2 == 0) {
+                exibir.innerHTML += `${numeros[j]} <br>`
+            }
+        }
+    }
+
+    function todos() {
+        exibir.innerHTML = ``
+        for (let k = 0; k < numeros.length; k++) {
+            exibir.innerHTML += `${numeros[k]} <br>`
+        }
+    }
+</script>

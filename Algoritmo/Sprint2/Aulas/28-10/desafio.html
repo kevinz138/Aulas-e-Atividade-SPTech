@@ -29,38 +29,54 @@
         let qtdMarinheiro = Number(ipt_qtdMarinheiro.value)
         let qtdCarnes = Number(ipt_qtdCarnes.value)
 
-        let marinheirosDerrotados = 0
-
-        let energia = 100
-
-        let derrota = 0
-
         if (qtdBatalhas <= 0) {
             alert(`Quantidades de batalhas inválidas`)
-        } else if (qtdMarinheiro <= 0) {
+        }
+
+        if (qtdMarinheiro <= 0) {
             alert(`Quantidade de marinheiros inválidas`)
         } else {
-            for (let i = 1; i <= qtdBatalhas && energia >= 10; i++) {
-                if (energia < 10 && qtdCarnes > 0) {
-                    qtdCarnes--
-                    energia = 100
-                }
 
-                energia -= 10
+            let marinheirosDerrotados = 0
+            let energia = 100
+            let vitoria = true
+            let totalMarinheiroDerrotados = qtdBatalhas * qtdMarinheiro
 
-                for (let j = 1; j <= qtdMarinheiro || energia >= 5; j++) {
-                    if (energia < 5 && qtdCarnes > 0) {
+            for (let i = 1; i <= qtdBatalhas && vitoria == true; i++) {
+                if (energia < 10) {
+                    if (qtdCarnes > 0) {
                         qtdCarnes--
                         energia = 100
                     } else {
-                        qtdBatalhas = 0
+                        vitoria = false
                     }
-                    energia -= 5
-                    marinheirosDerrotados++
+                }
+
+                if (vitoria == true) {
+                    energia -= 10
+
+                    for (let j = 1; j <= qtdMarinheiro && vitoria == true; j++) {
+                        if (energia < 5) {
+                            if (qtdCarnes > 0) {
+                                qtdCarnes--
+                                energia = 100
+                            } else {
+                                vitoria = false
+                            }
+                        }
+
+                        if (vitoria == true) {
+                            energia -= 5
+                            marinheirosDerrotados++
+                        }
+                    }
                 }
             }
-            if (qtdMarinheiro == marinheirosDerrotados) {
-                exibir.innerHTML = `Resultado: Luffy saiu derrotado! Sobraram ${qtdMarinheiro - marinheirosDerrotados} <br> 
+
+            let marinheirosRestantes = totalMarinheiroDerrotados - marinheirosDerrotados
+
+            if (vitoria == false) {
+                exibir.innerHTML = `Resultado: Luffy saiu derrotado! Sobraram ${marinheirosRestantes} <br> 
                     Quantidade de carnes restantes: ${qtdCarnes} 
                     <br> Quantidade de marinheiros derrotados: ${marinheirosDerrotados} <br> 
                     Energia restante ao final das batalhas: ${energia} <br>`

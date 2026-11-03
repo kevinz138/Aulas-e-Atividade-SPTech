@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex5</title>
+</head>
+<body>
+    Digite o nome de cada projeto que já criou na vida:
+    <input type="text" id="ipt_nomeProjeto"> <br>
+
+    <button onclick="registrar()">Registar Projetos</button> <br>
+
+    <button onclick="mostrar()">Mostrar Projetos</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let projeto = []
+
+    function registrar() {
+        let nomeProjeto = ipt_nomeProjeto.value
+        projeto.push(nomeProjeto)
+        console.log(projeto)
+    }
+
+    function mostrar() {
+        if (projeto.length < 5) {
+            exibir.innerHTML = `Você já fez ${projeto.length} projetos. Por isso você é um profissional Júnior`
+        } else if (projeto.length < 12) {
+            exibir.innerHTML = `Você já fez ${projeto.length} projetos. Por isso você é um profissional Pleno`
+        } else {
+            exibir.innerHTML = `Você já fez ${projeto.length} projetos. Por isso você é um profissional Sênior`
+        }
+    }
+</script>
