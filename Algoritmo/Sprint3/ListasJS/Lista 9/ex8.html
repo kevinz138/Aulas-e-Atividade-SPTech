@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex8</title>
+</head>
+<body>
+    Digite o nome do seu filho:
+    <input type="text" id="ipt_nomeFilho"> 
+    <button onclick="cadastrar()">Cadastrar</button> <br>
+    <button onclick="atualizar()">Atualizar Família</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let listaNome = []
+
+    function cadastrar() {
+        let nomeFilho = ipt_nomeFilho.value
+        
+        if (listaNome.includes(nomeFilho)) {
+            alert(`O nome não pode ser repetido`)
+        } else {
+            listaNome.push(nomeFilho)
+        }
+    }
+
+    function atualizar() {
+        let total = listaNome.length
+        let msg = ``
+
+        if (total > 1) {
+            msg += `Você tem ${total} filhos <br> <br>`
+        } else {
+            msg += `Você tem ${total} filho <br> <br>`
+        }
+
+        msg += `Seu custo mensal será aproximadamente R$${total * 3000} se colocá-los em escola particular ou R$${total * 1500} se eles estudarem em escola pública  `
+        
+        exibir.innerHTML = msg
+    }
+</script>

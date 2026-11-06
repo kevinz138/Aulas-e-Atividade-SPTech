@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex6</title>
+</head>
+<body>
+    <input type="text" id="ipt_linhas">
+    <button onclick="cadastra()">Cadastrar</button> <br>
+    <input type="text" id="ipt_pesquisa">
+    <button onclick="pesquisar()">Pesquisar</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let ListaLinhas = []
+
+    function cadastra() {
+        let linhas = ipt_linhas.value
+        ListaLinhas.push(linhas)
+        let msg = ``
+
+        for (let i = ListaLinhas.length -1; i >= 0; i--) {
+            msg += `Linha: ${ListaLinhas[i]} <br>`
+        }
+
+        exibir.innerHTML = msg
+    }
+
+    function pesquisar() {
+        let pesquisa = ipt_pesquisa.value
+        let ListaAux = []
+        let cont = 0
+
+        for (let i = 0; i < ListaLinhas.length; i++) {
+            if (ListaLinhas[i] == pesquisa) {
+                ListaAux.push(i)
+                cont++
+            }
+        }
+        if (cont > 0) {
+            exibir.innerHTML = `Você já pegou essa linha ${cont} vezes, nos índices: ${ListaAux}`
+        } else {
+            exibir.innerHTML = `Você nunca pegou essa linha`
+        }
+    }
+</script>

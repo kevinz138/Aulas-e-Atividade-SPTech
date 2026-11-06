@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex10</title>
+</head>
+<body>
+    Digite um número qualquer:
+    <input type="text" id="ipt_numero"> <br>
+
+    <button onclick="analisar()">Analisar Histórico</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+
+<script>
+    let listaNumero = [];
+
+    function analisar() {
+        let numero = Number(ipt_numero.value);
+
+        listaNumero.push(numero);
+
+        let msg = ``;
+
+        for (let i = 0; i < listaNumero.length; i++) {
+            msg += `${i + 1}° Número: ${listaNumero[i]} <br>`;
+        }
+
+        msg += `<br>`;
+
+        let maiorNumero = listaNumero[0];
+        let menorNumero = listaNumero[0];
+
+        for (let i = 1; i < listaNumero.length; i++) {
+            if (listaNumero[i] > maiorNumero) {
+                maiorNumero = listaNumero[i];
+            }
+            if (listaNumero[i] < menorNumero) {
+                menorNumero = listaNumero[i];
+            }
+        }
+
+        msg += `Maior: ${maiorNumero} <br>`;
+        msg += `Menor: ${menorNumero} <br>`;
+
+        exibir.innerHTML = msg;
+    }
+</script>

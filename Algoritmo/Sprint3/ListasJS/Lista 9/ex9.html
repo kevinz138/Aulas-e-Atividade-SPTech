@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex9</title>
+</head>
+
+<body>
+    Indique o resultado:
+    <select id="select_combo">
+        <option>Vitória</option>
+        <option>Empate</option>
+        <option>Derrota</option>
+    </select>
+
+    <button onclick="registrar()">Registrar Jogo</button> <br>
+
+    Indique qual jogo deseja saber o resultado
+    <input type="text" id="ipt_resultado" oninput="resultado()">
+
+    <div id="exibir"></div>
+</body>
+
+</html>
+<script>
+    let resultadoJogo = []
+
+    function registrar() {
+        let combo = select_combo.value
+
+        resultadoJogo.push(combo)
+
+        let vitoria = 0
+        let empate = 0
+        let derrota = 0
+
+        for (let i = 0; i < resultadoJogo.length; i++) {
+            if (resultadoJogo[i] == 'Vitória') {
+                vitoria++
+            } else if (resultadoJogo[i] == 'Empate') {
+                empate++
+            } else {
+                derrota++
+            }
+        }
+
+        let totalPontos = (vitoria * 3) + empate
+        let pontosPossiveis = resultadoJogo.length * 3
+        let aporveitamento = totalPontos / pontosPossiveis * 100
+
+        exibir.innerHTML = `
+        O time teve: ${vitoria} vitórias, ${empate} empates, ${derrota} derrotas <br>
+
+        Pontuação total: ${totalPontos} pontos <br>
+
+        Aproveitamento: ${aporveitamento.toFixed(2)}% <br>`
+    }
+
+    function resultado() {
+
+        let jogo = Number(ipt_resultado.value)
+
+        if (jogo > 0 && jogo <= resultadoJogo.length) {
+            let resultado = resultadoJogo[jogo - 1]
+
+            if (resultado == 'Vitória') {
+                exibir.innerHTML = `No ${jogo}º jogo, o time Ganhou`
+            } else if (resultado == 'Derrota') {
+                exibir.innerHTML = `No ${jogo}º jogo, o time Perdeu`
+            } else {
+                exibir.innerHTML = `No ${jogo}º jogo, o time Empatou`
+            }
+        } else {
+            exibir.innerHTML = `Não foi cadastrado um ${jogo}º jogo`
+        }
+    }
+</script>
