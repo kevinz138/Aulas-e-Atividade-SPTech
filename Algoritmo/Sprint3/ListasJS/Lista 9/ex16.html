@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex16</title>
+</head>
+
+<body>
+    Escolha seu candidato:
+    <select id="select_candidato">
+        <option>Mariana</option>
+        <option>Cleber</option>
+        <option>Adalberto</option>
+    </select> <br>
+
+    <button onclick="votar()">Votar</button>
+    <button onclick="apurar()">Apurar votos</button>
+
+    <div id="exibir"></div>
+</body>
+
+</html>
+<script>
+    let votos = []
+
+    function votar() {
+        let candidato = select_candidato.value
+        let msg = ``
+
+        votos.push(candidato)
+        msg += `Voto registrado! Obrigado por participar.`
+
+        exibir.innerHTML = msg
+    }
+
+    function apurar() {
+        let msg = ``
+
+        let totalVotos = votos.length
+        let totalM = 0
+        let totalA = 0
+        let totalC = 0
+
+        msg += `Total de votos: ${totalVotos} <br><br>`
+
+        for (let i = 0; i < votos.length; i++) {
+            if (votos[i] == `Mariana`) {
+                totalM++
+            } else if (votos[i] == `Cleber`) {
+                totalC++
+            } else {
+                totalA++
+            }
+        }
+
+        
+        msg += `Mariana: ${totalM} votos <br>`
+        msg += `Cleber: ${totalC} votos <br>`
+        msg += `Adalberto: ${totalA} votos <br><br>`
+
+        if (totalVotos == 0) {
+            msg += `Nenhum voto registrado <br>`
+        } else if (totalM > totalA && totalM > totalC) {
+            msg += `O(A) vencedor(a) é Mariana! <br>`
+        } else if (totalC > totalA && totalC > totalM) {
+            msg += `O(A) vencedor(a) é Cleber! <br>`
+        } else if (totalA > totalC && totalA > totalM) {
+            msg += `O(A) vencedor(a) é Adalberto! <br>`
+        } else {
+            msg += `Houve empate! <br>`
+        }
+        
+        exibir.innerHTML = msg
+    }
+</script>

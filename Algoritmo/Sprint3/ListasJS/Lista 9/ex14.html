@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex14</title>
+</head>
+
+<body>
+    Temperatura do dia:
+    <input type="text" id="ipt_temp"> <br>
+
+    <button onclick="registrar()">Registrar</button>
+
+    <div id="exibir"></div>
+</body>
+
+</html>
+<script>
+    let listTemp = []
+
+    function registrar() {
+        let temp = Number(ipt_temp.value)
+        let msg = ``
+        let diasCalor = 0
+
+        if (temp == `` || temp < -20 || temp > 50) {
+            alert(`Tempreatura inválida!`)
+        } else {
+            listTemp.push(temp)
+
+            let maiorTemp = listTemp[0]
+            let menorTemp = listTemp[0]
+
+            msg += `Tempreatuda do dia ${listTemp.length} anotada <br><br>`
+
+            for (let i = listTemp.length - 1; i >= 0; i--) {
+
+                if (listTemp[i] < 15) {
+                    msg += `Dia ${i + 1}: ${listTemp[i]}°C  - Frio <br>`
+                } else if (listTemp[i] >= 15 && listTemp[i] <= 24) {
+                    msg += `Dia ${i + 1}: ${listTemp[i]}°C - Agradável <br>`
+                } else {
+                    msg += `Dia ${i + 1}: ${listTemp[i]}°C  - Calor <br>`
+                    diasCalor++
+                }
+
+                if (listTemp[i] > maiorTemp) {
+                    maiorTemp = listTemp[i]
+                }
+
+                if (listTemp[i] < menorTemp) {
+                    menorTemp = listTemp[i]
+                }
+            }
+
+            msg += `<br>Maior temperatura: ${maiorTemp}°C<br>`
+            msg += `Menor temperatura: ${menorTemp}°C<br>`
+            msg += `Dias de calor: ${diasCalor}`
+
+            exibir.innerHTML = msg
+        }
+    }
+</script>

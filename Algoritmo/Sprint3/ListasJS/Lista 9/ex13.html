@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex13</title>
+</head>
+
+<body>
+    Nome do produto:
+    <input type="text" id="ipt_produto"> <br>
+
+    Preço do produto:
+    <input type="text" id="ipt_preco"> <br>
+
+    <button onclick="adicionar()">Adicionar</button>
+    <button onclick="carrinho()">Ver carrinho</button>
+
+    <div id="exibir"></div>
+</body>
+
+</html>
+<script>
+    let listaNomeProduto = []
+    let listaPrecoProduto = []
+
+    function adicionar() {
+        let nomeProduto = ipt_produto.value
+        let precoProduto = Number(ipt_preco.value)
+
+        if (nomeProduto == '' || precoProduto < 0) {
+            alert('Nome do produto vazio ou preço igual ou igual a 0')
+        } else {
+            listaNomeProduto.push(nomeProduto)
+            listaPrecoProduto.push(precoProduto)
+            exibir.innerHTML = `${nomeProduto} adicionado ao carrinho!`
+        }
+    }
+
+    function carrinho() {
+        exibir.innerHTML = ``
+        let total = listaNomeProduto.length
+
+        let maiorPreco = listaPrecoProduto[0]
+        let nomeCaro = listaNomeProduto[0]
+
+        let somaCompra = 0
+        for (let i = listaNomeProduto.length - 1; i >= 0; i--) {
+            let precoAtual = listaPrecoProduto[i]
+            let nomeAtual = listaNomeProduto[i]
+
+            exibir.innerHTML += `Produto ${i+1} - ${nomeAtual} - R$${precoAtual} <br>`
+
+            somaCompra += precoAtual
+
+            if (precoAtual > maiorPreco) {
+                maiorPreco = precoAtual
+                nomeAtual = nomeCaro
+            }
+        }
+
+        exibir.innerHTML += `Você tem ${total} produtos no carrinho <br>
+        Total da compra: R$${somaCompra} <br>
+        Produto mais caro: ${nomeCaro} (R$${maiorPreco})`
+        
+    }
+</script>

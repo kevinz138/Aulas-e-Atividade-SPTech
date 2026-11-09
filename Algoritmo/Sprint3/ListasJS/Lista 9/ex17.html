@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex17</title>
+</head>
+
+<body>
+    Nome da música:
+    <input type="text" id="ipt_nome"> <br>
+    Duração(em minutos):
+    <input type="text" id="ipt_duracao"> <br>
+
+    <button onclick="adicionar()">Adicionar à playlist</button>
+    <button onclick="playlist()">Ver playlist</button>
+
+    Pesquisar música:
+    <input type="text" id="ipt_pesquisar"> <br>
+
+    <button onclick="pesquisa()">Pesquisar</button>
+
+    <div id="exibir"></div>
+</body>
+
+</html>
+<script>
+    let listaMusicas = []
+    let listaDuracao = []
+
+    function adicionar() {
+        let nomeMusica = ipt_nome.value
+        let duracao = Number(ipt_duracao.value)
+        let msg = ``
+
+        if (nomeMusica == ``) {
+            alert(`Nome de música inválido`)
+        } else if (duracao <= 0) {
+            alert(`Duração inválida`)
+        } else {
+            listaMusicas.push(nomeMusica)
+            listaDuracao.push(duracao)
+            msg += `${nomeMusica} entrou na playlist!`
+        }
+
+        exibir.innerHTML = msg
+    }
+
+    function playlist() {
+        let msg = ``
+        let somaMusica = 0
+        let totalMinutos = 0
+        let cont = 0
+
+        let nomeMaisLonga = [0]
+
+        for (let i = listaMusicas.length - 1; i >= 0; i--) {
+            msg += `${i + 1}° Música - ${listaMusicas[i]} <br>`
+            somaMusica++
+            totalMinutos += listaDuracao[i]
+
+            if (listaDuracao[i] > nomeMaisLonga) {
+                nomeMaisLonga = listaDuracao[i]
+            }
+        }
+
+        msg += `<br><br>Total de músicas: ${listaMusicas.length}<br>`
+        msg += `Duração total: ${totalMinutos} minutos<br>`
+        msg += `Música mais longa: ${nomeMaisLonga}<br>`
+
+        exibir.innerHTML = msg
+    }
+
+    function pesquisa() {
+        let pesquisar = ipt_pesquisar.value
+        let listaAux = []
+        let cont = 0
+
+        let msg2 = ``
+
+        for (let i = 0; i < listaMusicas.length; i++) {
+            if (listaMusicas[i] == pesquisar) {
+                listaAux.push(i)
+                cont++
+            }
+        }
+        
+        if (cont > 1) {
+            msg2 += `A música ${pesquisar} aparece ${cont} vezes na playlist, nos índices: ${listaAux} <br>`
+        } else if ( cont == 1) {
+            msg2 += `A música ${pesquisar} aparece ${cont} vez na playlist, no índice: ${listaAux} <br>`
+        } else {
+            msg2 += `Essa música não está na playlist <br>`
+        }
+
+        exibir.innerHTML = msg2
+    }
+</script>

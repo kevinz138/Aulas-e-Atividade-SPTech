@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex15</title>
+</head>
+<body>
+    Placa do veículo:
+    <input type="text" id="ipt_placa"> <br>
+
+    <button onclick="estacionar()">Estacionar</button> <br>
+
+    Buscar placa:
+    <input type="text" id="ipt_buscar"> <br>
+
+    <button onclick="buscar()">Buscar</button>
+    
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let listaVagas = []
+
+    function estacionar() {
+        let placa = ipt_placa.value
+        let msg = ``
+        let vagas = 5
+
+        if (placa == ``) {
+            alert(`Preencha a placa do veículo!`)
+        } else if (listaVagas.includes(placa)) {
+            alert(`Esse veículo já está no estacionamento!`)
+        } else if (listaVagas.length >= 5) {
+            alert(`Estacionamento lotado!`)
+        } else {
+            let restante = 5 - listaVagas.length -1
+            listaVagas.push(placa)
+            msg += `Veículo ${placa} estacionado! Restam ${restante} vagas <br>`
+        }
+
+        exibir.innerHTML += msg
+    }
+
+    function buscar() {
+        let placaBuscada = ipt_buscar.value
+        let msg = ``
+
+        for (let i = 1; i < listaVagas.length; i++) {
+            if (listaVagas[i] == placaBuscada) {
+                msg += `<br> O veículo ${placaBuscada} está na vaga ${i+1} <br>`
+            } else {
+                msg += `<br> Esse veículo não está no estacionamento <br>`
+            }
+        }
+
+        exibir.innerHTML += msg
+    }
+</script>
