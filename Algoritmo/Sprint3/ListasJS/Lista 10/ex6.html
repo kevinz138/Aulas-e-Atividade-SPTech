@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex6</title>
+</head>
+<body>
+    Marca do carro:
+    <input type="text" id="ipt_marca"> <br>
+    Modelo:
+    <input type="text" id="ipt_modelo"> <br>
+    Ano:
+    <input type="text" id="ipt_ano"> <br>
+
+    <button onclick="cadastrar()">Cadastrar Carro</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function cadastrar() {
+        let msg = ``
+        let carro = {
+            marca: ipt_marca.value,
+            modelo: ipt_modelo.value,
+            ano: Number(ipt_ano.value)
+        }
+        carro.idade = 2026 - carro.ano
+        msg += `Marca: ${carro.marca} <br>
+                Modelo: ${carro.modelo} <br>
+                Idade do carro: ${carro.idade} anos <br>`
+
+        delete carro.ano
+
+        exibir.innerHTML = msg
+    }
+</script>

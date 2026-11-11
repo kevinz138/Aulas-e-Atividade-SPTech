@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex9</title>
+</head>
+<body>
+    Destino:
+    <input type="text" id="ipt_destino"> <br>
+    Preço da viagem:
+    <input type="text" id="ipt_preco"> <br>
+    Quantidade de dias:
+    <input type="text" id="ipt_qtdDias"> <br>
+
+    <button onclick="cadastrar()">Cadastrar Viagem</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function cadastrar() {
+        let msg = ``
+        let viagem = {
+            destino: ipt_destino.value,
+            preco: Number(ipt_preco.value),
+            dias: Number(ipt_qtdDias.value)
+        }
+
+        if (viagem.preco > 5000) {
+            viagem.tipo = `Viagem Premium`
+        } else {
+            viagem.tipo = `Viagem Regular`
+        }
+
+        msg += `Destino: ${viagem.destino} <br>
+                Preço: R$${viagem.preco} <br>
+                Dias: ${viagem.dias} <br>
+                Tipo: ${viagem.tipo} <br>`
+        
+        exibir.innerHTML = msg
+    }
+</script>

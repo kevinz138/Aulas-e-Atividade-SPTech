@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex1</title>
+</head>
+<body>
+    Digite o nome do pet:
+    <input type="text" id="ipt_nome"> <br>
+    Tipo do animal:
+    <input type="text" id="ipt_tipoAnimal"> <br>
+    Idade do pet:
+    <input type="text" id="ipt_idadePet"> <br>
+
+    <button onclick="cadastrar()">Cadastrar Pet</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function cadastrar() {
+        let msg = ``
+        let listaPet = [{
+            nomePet: ipt_nome.value,
+            tipoAnimal: ipt_tipoAnimal.value,
+            idadePet: ipt_idadePet.value
+        }]
+
+        for (let i = 0; i < listaPet.length; i++) {
+            msg += `Pet: ${listaPet[i].nomePet} <br>
+                    Tipo: ${listaPet[i].tipoAnimal} <br>
+                    Idade: ${listaPet[i].idadePet} <br><br>`
+        }
+
+        exibir.innerHTML += msg
+
+        console.log(listaPet)
+    }
+</script>

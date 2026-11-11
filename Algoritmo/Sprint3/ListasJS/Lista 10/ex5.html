@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex5</title>
+</head>
+
+<body>
+    Nome do aluno:
+    <input type="text" id="ipt_nome"> <br>
+    Nota:
+    <input type="text" id="ipt_nota"> <br>
+    Frequência:
+    <input type="text" id="ipt_frequencia"> <br>
+
+    <button onclick="analisar()">Analisar Aluno</button>
+
+    <div id="exibir"></div>
+</body>
+
+</html>
+<script>
+    function analisar() {
+        let msg = ``
+        let aluno = {
+            nome: ipt_nome.value,
+            nota: Number(ipt_nota.value),
+            frequencia: Number(ipt_frequencia.value)
+        }
+
+        if (aluno.nota >= 6 && aluno.frequencia >= 75) {
+            aluno.situacao = `Aprovado`
+        } else {
+            aluno.situacao = `Reprovado`
+        }
+
+        msg += `Aluno: ${aluno.nome} <br>
+                Nota: ${aluno.nota} <br>
+                Frequência: ${aluno.frequencia} <br>
+                Situação: ${aluno.situacao}`
+
+        exibir.innerHTML = msg
+    }
+</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex8</title>
+</head>
+<body>
+    Nome do comprador:
+    <input type="text" id="ipt_nome"> <br>
+    Email do comprador:
+    <input type="text" id="ipt_email"> <br>
+    Nome do produto:
+    <input type="text" id="ipt_produto"> <br>
+    Valor do produto:
+    <input type="text" id="ipt_valor"> <br>
+
+    <button onclick="cadastrar()">Cadastrar Jogo</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function cadastrar() {
+        let msg = ``
+        let comprador = {
+            nome: ipt_nome.value,
+            email: ipt_email.value
+        }
+
+        let produto = {
+            nome: ipt_produto.value,
+            preco: ipt_preco.value
+        }
+
+        msg += `Comprador: ${comprador.nome} | ${comprador.email} <br><br><br>
+                Produto: ${produto.nome} <br>
+                Valor: R$${produto.preco}`
+
+        exibir.innerHTML = msg
+
+        console.log(comprador)
+        console.log(produto)
+    }
+</script>

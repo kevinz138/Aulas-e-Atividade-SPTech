@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex7</title>
+</head>
+<body>
+    Nome do jogo:
+    <input type="text" id="ipt_nome"> <br>
+    Empresa:
+    <input type="text" id="ipt_empresa"> <br>
+    Plataforma:
+    <input type="text" id="ipt_plataforma"> <br>
+
+    <button onclick="cadastrar()">Cadastrar Jogo</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function cadastrar() {
+        let msg = ``
+        let jogo = {
+            nome: ipt_nome.value,
+            empresa: ipt_empresa.value,
+            plataforma: ipt_plataforma.value
+        }
+
+        msg += `Jogo: ${jogo.nome.toUpperCase()} <br>
+                Empresa: ${jogo.empresa.toLowerCase()} <br>
+                Plataforma: ${jogo.plataforma}`
+
+        exibir.innerHTML = msg
+    }
+</script>

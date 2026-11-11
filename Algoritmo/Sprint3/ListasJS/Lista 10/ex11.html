@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex11</title>
+</head>
+<body>
+    Nome:
+    <input type="text" id="ipt_nome"> <br>
+    Idade:
+    <input type="text" id="ipt_idade"> <br>
+    Cargo:
+    <input type="text" id="ipt_cargo"> <br>
+
+    <button onclick="cadastrar()">Cadastrar usuário</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function cadastrar() {
+        let msg = ``
+        let usuario = {
+            nome: ipt_nome.value,
+            idade: Number(ipt_idade.value),
+            cargo: ipt_cargo.value
+        }
+
+        if (usuario.cargo == `Administrador`) {
+            usuario.nivelAcesso = `Total`
+        } else {
+            usuario.nivelAcesso = `Limitado`
+        }
+
+        msg += `Usuário: ${usuario.nome} <br>
+                Cargo: ${usuario.cargo} <br>
+                Nível de acesso: ${usuario.nivelAcesso} <br>`
+
+        exibir.innerHTML = msg
+    }
+</script>
