@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nome da arma:
+    <input type="text" id="ipt_nomeArma">
+    <button onclick="pontosArma()">Pontos arma</button><br>
+
+    Tipo da arma (Corte, Blindagem, Projéteis e Cerco)
+    <input type="text" id="ipt_tipoArma">
+    <button onclick="percentualAcrescimo()">Percentual acréscimo</button><br>
+
+    Quantidade de Pontos Necessários:
+    <input type="text" id="ipt_qtdPontos"> <br>
+
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="listarTudo()">Listar todas armas</button> <br><br>
+
+    Pesquise um tipo de Arma:
+    <input type="text" id="ipt_pesquisar">
+    <button onclick="listarTipo()">Listar por tipo</button> <br> <br>
+
+    <div id="exibir"></div>
+</body>
+
+</html>
+<script>
+    let listaArma = []
+    let listaTipoArma = []
+    let listaPontoNecessario = []
+
+    function cadastrar() {
+        let nome = ipt_nomeArma.value
+        let tipo = ipt_tipoArma.value
+        let qtdPontos = Number(ipt_qtdPontos.value)
+        let msg = ``
+
+        if (listaArma.includes(nome)) {
+            alert(`Não pode haver mais de uma arma com o mesmo nome`)
+        } else if (tipo != `Corte` && tipo != `Blindagem` && tipo != `Projéteis` && tipo != `Cerco`) {
+            alert(`Tipo de arma não aceito`)
+        } else if (qtdPontos < 0) {
+            alert(`Pontos necessário não pode ser menor que 0`)
+        } else {
+            listaArma.push(nome)
+            listaTipoArma.push(tipo)
+            listaPontoNecessario.push(qtdPontos)
+
+            msg += `${nome} adicionado ao inventário`
+        }
+
+        exibir.innerHTML = msg
+    }
+
+    function pontosArma() {
+        let novosPontos = prompt(`Digite a nova quantidade de pontos da arma`)
+    }
+
+    function percentualAcrescimo() {
+        let percentAcresc = prompt(`Digite o percentual de acréscimo para esse tipo de arma`)
+    }
+
+    function listarTudo() {
+        let msg = ``
+        for (let i = listaArma.length - 1; i >= 0; i--) {
+            msg += `${listaArma[i]} - Tipo: ${listaTipoArma[i]} <br>`
+        }
+
+        exibir.innerHTML = msg
+    }
+
+    function listarTipo() {
+        let tipoArma = ipt_pesquisar.value
+        let total = 0
+        let msg = ``
+
+        if (listaTipoArma.includes(tipoArma)) {
+            let maiorPonto = listaPontoNecessario[0]
+            let menorPonto = listaPontoNecessario[0]
+
+            for (let i = 0; i < listaTipoArma.length; i++) {
+                let pontosAtual = listaPontoNecessario[i]
+                let tipoAtual = listaTipoArma[i]
+
+                if (tipoAtual == `Corte`) {
+                    total++
+                    msg += `${listaArma[i]} - Tipo: ${listaTipoArma[i]} <br>`
+                    if (pontosAtual > maiorPonto) {
+                        maiorPonto = listaPontoNecessario[i]
+                    }
+                    if (pontosAtual < menorPonto) {
+                        menorPonto = listaPontoNecessario[i]
+                    }
+                }
+            }
+
+            msg += `<br><br>A maior quantidade de pontos necessários ${maiorPonto}<br>
+                    A menor quantidade de pontos necessário ${menorPonto}<br>
+                    Total de armas nesse tipo: ${total}`
+        } else {
+            alert(`Não tem armas neste tipo`)
+        }
+
+        exibir.innerHTML = msg
+    }
+</script>
