@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex1</title>
+</head>
+<body>
+    Digite o nome do aluno:
+    <input type="text" id="ipt_nome"> <br>
+    <button onclick="registrar()">Registrar</button> <br>
+    <select id="select_situacao">
+        <option>Todos</option>
+        <option>Aprovado</option>
+        <option>Reprovado</option>
+    </select>
+
+    <button onclick="listar()">Listar Alunos</button>
+
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    let listaAluno = []
+
+    function registrar() {
+        let aluno = {
+            nome: ipt_nome.value,
+        }
+        let min = 0
+        let max = 10
+        let intervalo = max - min
+        let nota1 = Math.random()
+        let nota2 = Math.random()
+        let nota3 = Math.random()
+
+        let nota1Formatado = Number((nota1 * intervalo + min).toFixed())
+        let nota2Formatado = Number((nota2 * intervalo + min).toFixed())
+        let nota3Formatado = Number((nota3 * intervalo + min).toFixed())
+
+        let media = (nota1Formatado + nota2Formatado + nota3Formatado) / 3
+
+        aluno.nota1 = nota1Formatado
+        aluno.nota2 = nota2Formatado
+        aluno.nota3 = nota3Formatado
+
+        if (media >= 6) {
+            aluno.situacao = `APROVADO`
+        } else {
+            aluno.situacao = `REPROVADO`
+        }
+
+        listaAluno.push(aluno)
+    }
+
+    function listar() {
+        let situacao = select_situacao.value
+
+        if (situacao == `Todos`) {
+
+            let alunoAtual = listaAluno[0]
+
+            for (let i = 0; i < listaAluno.length; i++)
+
+            exibir.innerHTML = `Aluno: ${listaAluno.aluno.nome} <br>
+                            Notas: ${listaAluno.aluno.nota1}, ${listaAluno.aluno.nota2}, ${listaAluno.aluno.nota3} <br>
+                            Média: ${listaAluno.aluno.media.toFixed(2)} <br>`
+        } else if (situacao == `Aprovado`) {
+
+        } else
+    }
+</script>

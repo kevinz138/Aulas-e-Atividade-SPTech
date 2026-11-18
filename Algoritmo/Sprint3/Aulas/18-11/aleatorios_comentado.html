@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<input placeholder="Mínimo" type="text" id="input_min"><br>
+<input placeholder="Máximo" type="text" id="input_max"> <br>
+<body>
+   <button onclick="sortear()">Sortear Aleatório</button>
+   <button onclick="sortear0a10()">Sortear de 0 até 10</button>
+   <button onclick="sortear3a10()">Sortear de 3 até 10</button>
+   <button onclick="sortearMinMax()">Sortear de min até max</button> <br>
+   <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+   function sortear() {  // Função básica para entender o ponto de partida do JavaScript
+      let aleatorio = Math.random();   // Gera um número decimal (float) entre 0 (inclusivo) e 1 (exclusivo)
+      
+      console.log(aleatorio);  // Exibe o valor puro no console do navegador para depuração
+
+      div_mensagem.innerHTML = `Sorteado: ${aleatorio}`;  // Exibe o valor na tela dentro do elemento com id "div_mensagem"
+   }
+
+   function sortear0a10() { // Função para ampliar o alcance do sorteio (escala de 0 a 10)
+      let aleatorio = Math.random(); 
+      
+      // Multiplicamos por 10 para aumentar o limite máximo gerado pelo número
+      let formatado = aleatorio * 10; // Se era 0, continua 0. Se era 0.5, vira 5.0. Se era 0.99, vira 9.9
+      
+      let inteiro = formatado.toFixed(); // .toFixed() remove as casas decimais, arredondando para o inteiro mais próximo
+
+      div_mensagem.innerHTML = `
+         Sorteado: ${aleatorio} <br>
+         Formatado: ${formatado} <br>
+         Inteiro: ${inteiro} <br>
+      `;
+   }
+   
+   function sortear3a10() { // Função com deslocamento: Sorteia em um intervalo que não começa em 0
+      let aleatorio = Math.random();
+      let min = 3;
+      let max = 10;
+      
+      let intervalo = max - min; // Calculamos a 'distância' entre os números (7 unidades de variação)
+      
+      // A lógica é: (valor sorteado * tamanho do intervalo) + ponto de partida
+      // Isso garante que o número nunca seja menor que o mínimo (3)
+      let formatado = aleatorio * intervalo + min;
+      let inteiro = formatado.toFixed();
+
+      div_mensagem.innerHTML = `
+         Sorteado: ${aleatorio} <br>
+         Formatado: ${formatado} <br>
+         Inteiro: ${inteiro} <br>
+      `;
+   }
+   
+   function sortearMinMax() { // Função dinâmica: Aceita valores digitados pelo usuário
+      let aleatorio = Math.random();
+      
+      let min = Number(input_min.value); // Captura o valor 'mínimo' inserido como número
+      let max = Number(input_max.value); // Captura o valor 'máximo' inserido como número
+      
+      // Aplicamos a mesma fórmula matemática anterior de intervalo
+      let intervalo = max - min; 
+      let formatado = aleatorio * intervalo + min;
+      
+      let inteiro = formatado.toFixed(); // Arredondamento final para o usuário
+
+      div_mensagem.innerHTML = `
+         Sorteado: ${aleatorio} <br>
+         Formatado: ${formatado} <br>
+         Inteiro: ${inteiro} <br>
+      `;
+   }
+</script>
