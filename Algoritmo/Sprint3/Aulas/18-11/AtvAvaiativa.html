@@ -1,11 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    Nome do astronauta;
+    <input type="text" id="ipt_nome"> <br>
+    Nome do planeta da viagem;
+    <input type="text" id="ipt_nomePlaneta"> <br>
+    Tempo relativo no planeta (a Terra é N vezes mais rápida);
+    <input type="text" id="ipt_tempoPlaneta"> <br>
+    Quantidade de dias da viagem;
+    <input type="text" id="ipt_diasViagem"> <br>
+    Quantidade de horas da viagem;
+    <input type="text" id="ipt_hrsViagem"> <br>
+    Quantidade de minutos da viagem;
+    <input type="text" id="ipt_qtdMinutos"> <br>
+
+    <button onclick="registrar()">Registrar Viagem</button>
+
+    <button onclick="relatorio()">Relatório de viagens</button>
+
+    <div id="exibir"></div>
 </body>
+
 </html>
+<script>
+    let listaViagem = []
+
+    function registrar() {
+        let viagem = {
+            astronauta: ipt_nome.value,
+            nomePlaneta: ipt_nomePlaneta.value,
+            tempoPlaneta: Number(ipt_tempoPlaneta.value),
+            diasViagem: Number(ipt_diasViagem.value),
+            hrsViagem: Number(ipt_hrsViagem.value),
+            qtdMinutos: Number(ipt_qtdMinutos.value),
+        }
+
+        let msg = ``
+
+        if (viagem.astronauta == `` || viagem.nomePlaneta == ``) {
+            alert(`Nome astronauta ou nome do planeta inválido`)
+        } else if (viagem.tempoPlaneta <= 0) {
+            alert(`Digite um tempo válido`)
+        } else if (viagem.diasViagem < 0 && viagem.hrsViagem < 0 && viagem.qtdMinutos < 0) {
+            alert(`Informe um tempo de viagem válido!`)
+        } else {
+            listaViagem.push(viagem)
+            msg = `Cadastro efetuado com sucesso`
+        }
+
+        exibir.innerHTML = msg
+    }
+
+    function relatorio() {
+        let total = listaViagem.length 
+        let msg = `Foram registradas ${total} viagens, detalhadas a seguir: <br> <br>`
+
+        for (let i = listaViagem.length - 1; i >= 0; i--) {
+            let viagemAtual = listaViagem[i]
+            let totalMinutos = (1440 * listaViagem[i].diasViagem) + (listaViagem[i].hrsViagem * 60) + listaViagem[i].qtdMinutos
+            let totalAno = Math.round(totalMinutos / 525600) 
+            let totalAnoTerra = listaViagem[i].tempoPlaneta * totalAno
+            msg += `Viagem ${i+1}: <br>
+                    Astronauta ${listaViagem[i].astronauta} ficou fora por pelo menos ${totalAnoTerra} anos no tempo da Terra. <br>
+                    A criança que nasceu quando ele saiu provavelmente está assim hoje: <br> `
+
+            if (totalAnoTerra <= 13) {
+                msg += `<img src="crianca.png" alt=""><br> <br>`
+            } else if (totalAnoTerra <= 30) {
+                msg += `<img src="adoclescente.png" alt=""><br> <br>`
+            } else if (totalAnoTerra <= 65) {
+                msg += `<img src="adulto.png" alt=""><br> <br>`
+            } else if (totalAnoTerra <= 100) {
+                msg += `<img src="velho.png" alt=""><br> <br>`
+            } else {
+                msg += `<img src="morto.png" alt=""><br> <br>`
+            }
+        }
+
+        exibir.innerHTML = msg
+    }
+</script>

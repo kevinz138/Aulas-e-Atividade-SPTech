@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fia e os Fios da Arquitetura</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Cabeçalho com a Fia pendurada no fio -->
+  <header>
+    <div id="balanco">
+      <div id="fio-topo"></div>
+      <div id="fia">🕷️</div>
+    </div>
+    <h1>Fia e os Fios da Arquitetura</h1>
+    <p>Ajude a Fia a tecer sua teia aprendendo Arquitetura Computacional! 🧵</p>
+  </header>
+
+  <!-- Abas -->
+  <nav id="abas">
+    <button id="aba-jogar" class="ativa">🎮 Jogar</button>
+    <button id="aba-estudar">📖 Estudar</button>
+  </nav>
+
+  <!-- ========== MODO JOGAR ========== -->
+  <section id="tela-jogar">
+
+    <div id="placar">
+      <p id="contador">0 de 16 palavras</p>
+
+      <!-- Fio de progresso com a Fia andando -->
+      <div id="fio">
+        <div id="fio-cheio"></div>
+        <div id="fia-andando">🕷️</div>
+      </div>
+    </div>
+
+    <div id="pergunta-caixa">
+      <p id="numero">Pergunta 1 de 16</p>
+      <p id="pergunta">Carregando...</p>
+      <div id="opcoes"></div>
+      <p id="mensagem"></p>
+      <p id="explicacao"></p>
+    </div>
+
+    <div id="botoes">
+      <button id="btn-conferir">✅ Conferir</button>
+      <button id="btn-proxima">➡️ Próxima</button>
+      <button id="btn-reiniciar">🔄 Reiniciar</button>
+    </div>
+
+  </section>
+
+  <!-- ========== MODO ESTUDAR ========== -->
+  <section id="tela-estudar">
+    <p id="dica-estudo">Clique em um cartão para ver a resposta e entender o conceito 👇</p>
+    <div id="cartoes"></div>
+  </section>
+
+  <footer>
+    <p>Atividade Avaliativa III — Arquitetura Computacional 💻</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

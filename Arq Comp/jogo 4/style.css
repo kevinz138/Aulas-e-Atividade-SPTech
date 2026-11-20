@@ -1,0 +1,293 @@
+/* Fia e os Fios da Arquitetura - visual claro e animado */
+
+body {
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  background-color: #fff6e5;
+  background-image: radial-gradient(#ffe2b0 2px, transparent 2px);
+  background-size: 28px 28px;
+  color: #3a1f2b;
+  margin: 0;
+  padding: 15px;
+  text-align: center;
+}
+
+/* ----- Cabeçalho ----- */
+header h1 {
+  color: #c8283c;
+  font-size: 34px;
+  margin: 0 0 5px 0;
+}
+
+header p {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Fia balançando no fio */
+#balanco {
+  height: 90px;
+  position: relative;
+  transform-origin: top center;
+  animation: balancar 3s ease-in-out infinite;
+}
+
+#fio-topo {
+  width: 3px;
+  height: 45px;
+  background-color: #c8283c;
+  margin: 0 auto;
+}
+
+#fia {
+  font-size: 46px;
+}
+
+@keyframes balancar {
+  0% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+  100% { transform: rotate(-6deg); }
+}
+
+/* ----- Abas ----- */
+#abas {
+  margin: 20px 0;
+}
+
+#abas button {
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 10px 24px;
+  margin: 3px;
+  background-color: white;
+  color: #c8283c;
+  border: 3px solid #c8283c;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#abas button.ativa {
+  background-color: #c8283c;
+  color: white;
+}
+
+/* ----- Placar e fio de progresso ----- */
+#placar {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#contador {
+  font-size: 22px;
+  font-weight: bold;
+  color: #c8283c;
+  margin: 5px 0 15px 0;
+}
+
+#fio {
+  position: relative;
+  height: 10px;
+  background-color: #ffd9a0;
+  border-radius: 10px;
+  margin: 25px 20px 10px 20px;
+}
+
+#fio-cheio {
+  height: 100%;
+  width: 0%;
+  background-color: #c8283c;
+  border-radius: 10px;
+  transition: width 0.6s;
+}
+
+#fia-andando {
+  position: absolute;
+  top: -22px;
+  left: 0%;
+  font-size: 30px;
+  transform: translateX(-50%);
+  transition: left 0.6s;
+}
+
+/* ----- Pergunta ----- */
+#pergunta-caixa {
+  background-color: white;
+  border: 4px solid #f2b134;
+  border-radius: 25px;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 6px 0 #e29a14;
+}
+
+#numero {
+  color: #e29a14;
+  font-weight: bold;
+  margin: 0;
+}
+
+#pergunta {
+  font-size: 21px;
+  margin: 10px 0 20px 0;
+}
+
+/* Botões de resposta */
+#opcoes button {
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  font-size: 18px;
+  padding: 14px;
+  margin: 10px 0;
+  background-color: #fff6e5;
+  color: #3a1f2b;
+  border: 3px solid #f2b134;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+#opcoes button:hover {
+  transform: scale(1.03);
+  background-color: #ffe9b8;
+}
+
+#opcoes button.selecionada {
+  background-color: #ffd36b;
+  border-color: #c8283c;
+}
+
+#opcoes button.certa {
+  background-color: #b9f0c4;
+  border-color: #2e9e4f;
+  animation: pulo 0.5s;
+}
+
+#opcoes button.errada {
+  background-color: #ffc2c2;
+  border-color: #c8283c;
+  animation: tremer 0.4s;
+}
+
+@keyframes pulo {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+@keyframes tremer {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+  100% { transform: translateX(0); }
+}
+
+#mensagem {
+  font-size: 19px;
+  font-weight: bold;
+  min-height: 26px;
+  margin: 10px 0 5px 0;
+}
+
+#explicacao {
+  font-size: 15px;
+  background-color: #fff0cf;
+  border-radius: 12px;
+  padding: 10px;
+  display: none;
+  text-align: left;
+}
+
+/* ----- Botões principais ----- */
+#botoes button {
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 22px;
+  margin: 5px;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+#btn-conferir {
+  background-color: #2e9e4f;
+}
+
+#btn-proxima {
+  background-color: #e29a14;
+  display: none;
+}
+
+#btn-reiniciar {
+  background-color: #c8283c;
+}
+
+#botoes button:hover {
+  transform: translateY(-2px);
+}
+
+/* ----- Modo estudar ----- */
+#tela-estudar {
+  display: none;
+}
+
+#dica-estudo {
+  font-size: 17px;
+}
+
+#cartoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.cartao {
+  width: 240px;
+  min-height: 150px;
+  background-color: white;
+  border: 4px solid #f2b134;
+  border-radius: 20px;
+  padding: 15px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #e29a14;
+  transition: transform 0.2s;
+}
+
+.cartao:hover {
+  transform: translateY(-4px) rotate(-1deg);
+}
+
+.cartao .numero-cartao {
+  color: #e29a14;
+  font-weight: bold;
+}
+
+.cartao .titulo-cartao {
+  font-size: 22px;
+  font-weight: bold;
+  color: #c8283c;
+  margin: 8px 0;
+}
+
+.cartao .texto-cartao {
+  font-size: 15px;
+  margin: 5px 0;
+}
+
+.cartao.virado {
+  background-color: #fff0cf;
+  border-color: #c8283c;
+  box-shadow: 0 5px 0 #c8283c;
+  animation: pulo 0.4s;
+}
+
+footer {
+  margin-top: 35px;
+  font-size: 13px;
+  color: #8a6a5a;
+}
