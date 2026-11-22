@@ -3,66 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0820">
   <title>Fia e os Fios da Arquitetura</title>
+  <meta name="description" content="Ajude a Fia a tecer a teia da Arquitetura Computacional: um jogo de estudo com 16 termos.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="app">
 
-  <!-- Cabeçalho com a Fia pendurada no fio -->
-  <header>
-    <div id="balanco">
-      <div id="fio-topo"></div>
-      <div id="fia">🕷️</div>
+  <!-- ===== Barra de topo ===== -->
+  <header id="topo">
+    <div id="marca">
+      <span id="marca-ico" aria-hidden="true"></span>
+      <span id="marca-nome">Fia <small>e os Fios da Arquitetura</small></span>
     </div>
-    <h1>Fia e os Fios da Arquitetura</h1>
-    <p>Ajude a Fia a tecer sua teia aprendendo Arquitetura Computacional! 🧵</p>
+    <nav id="abas" aria-label="Modos">
+      <button id="aba-jogar" class="ativa">Jogar</button>
+      <button id="aba-estudar">Estudar</button>
+      <button id="btn-som" title="Ligar/desligar som" aria-label="Som">Som: on</button>
+    </nav>
   </header>
 
-  <!-- Abas -->
-  <nav id="abas">
-    <button id="aba-jogar" class="ativa">🎮 Jogar</button>
-    <button id="aba-estudar">📖 Estudar</button>
-  </nav>
+  <!-- ===== MODO JOGAR ===== -->
+  <main id="tela-jogar" class="tela">
 
-  <!-- ========== MODO JOGAR ========== -->
-  <section id="tela-jogar">
+    <!-- Palco 3D (canvas) -->
+    <section id="palco">
+      <canvas id="cena"></canvas>
+      <div id="balao"><span id="balao-texto">Oi! Eu sou a Fia.</span></div>
+      <div id="dica-arrastar">arraste para girar a teia</div>
+    </section>
 
-    <div id="placar">
-      <p id="contador">0 de 16 palavras</p>
+    <!-- Painel lateral -->
+    <section id="painel">
 
-      <!-- Fio de progresso com a Fia andando -->
-      <div id="fio">
-        <div id="fio-cheio"></div>
-        <div id="fia-andando">🕷️</div>
+      <!-- Menu inicial -->
+      <div id="v-menu" class="vista ativa">
+        <p class="sobretitulo">Arquitetura Computacional</p>
+        <h1>Fia e os <span class="brilho">Fios da Arquitetura</span></h1>
+        <p class="intro">A Fia perdeu a teia dela. Cada termo que você acerta acende um fio e faz ela avançar. Complete os 16 fios e monte a teia inteira.</p>
+        <ol class="passos">
+          <li><b>1</b><span>Leia a pista</span></li>
+          <li><b>2</b><span>Escolha o termo certo</span></li>
+          <li><b>3</b><span>Veja a teia brilhar</span></li>
+        </ol>
+        <div class="linha-botoes">
+          <button id="btn-comecar" class="btn primario">Começar a tecer</button>
+          <button id="btn-ir-estudar" class="btn fantasma">Modo estudo</button>
+        </div>
+        <p id="recorde" class="recorde"></p>
+      </div>
+
+      <!-- Pergunta -->
+      <div id="v-quiz" class="vista">
+        <div class="hud">
+          <div class="hud-item"><span class="rotulo">Pergunta</span><b id="hud-num">1/16</b></div>
+          <div class="hud-item"><span class="rotulo">Pontos</span><b id="hud-pontos">0</b></div>
+          <div class="hud-item" id="hud-combo-caixa"><span class="rotulo">Sequência</span><b id="hud-combo">0</b></div>
+        </div>
+        <div id="pips" aria-hidden="true"></div>
+
+        <div id="cartao-pergunta">
+          <div class="pergunta-topo">
+            <span class="etiqueta" id="etq-grupo">Processador</span>
+            <span class="rotulo" id="rot-tempo">bônus de velocidade</span>
+          </div>
+          <div id="tempo"><i id="tempo-barra"></i></div>
+          <p id="pergunta">...</p>
+        </div>
+
+        <div id="opcoes"></div>
+
+        <div id="retorno" aria-live="polite">
+          <p id="mensagem"></p>
+          <p id="explicacao"></p>
+        </div>
+
+        <div class="linha-botoes">
+          <button id="btn-dica" class="btn fantasma pequeno">Dica (3)</button>
+          <button id="btn-proxima" class="btn primario">Próxima</button>
+          <button id="btn-reiniciar" class="btn fantasma pequeno">Reiniciar</button>
+        </div>
+        <p class="atalho">Atalhos: teclas 1 a 4 escolhem, Enter avança.</p>
+      </div>
+
+      <!-- Resultado -->
+      <div id="v-fim" class="vista">
+        <p class="sobretitulo">Teia concluída</p>
+        <h2 id="fim-titulo">Tecelã</h2>
+        <div id="estrelas" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="fim-numeros">
+          <div><b id="fim-acertos">0</b><span>acertos</span></div>
+          <div><b id="fim-pontos">0</b><span>pontos</span></div>
+          <div><b id="fim-seq">0</b><span>maior sequência</span></div>
+        </div>
+        <p id="fim-texto" class="intro"></p>
+        <div id="fim-erros"></div>
+        <div class="linha-botoes">
+          <button id="btn-de-novo" class="btn primario">Jogar de novo</button>
+          <button id="btn-so-erros" class="btn fantasma">Treinar só os erros</button>
+          <button id="btn-fim-estudar" class="btn fantasma">Estudar</button>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ===== MODO ESTUDAR ===== -->
+  <main id="tela-estudar" class="tela">
+    <div class="estudo-topo">
+      <div>
+        <p class="sobretitulo">Modo estudo</p>
+        <h2>Cartões da Fia</h2>
+        <p id="dica-estudo" class="intro">Clique em um cartão para virar. Marque "Já sei" nos que você domina.</p>
+      </div>
+      <div class="dominio">
+        <span id="dominio-texto">0 de 16 dominados</span>
+        <div id="dominio-trilho"><i id="dominio-barra"></i></div>
       </div>
     </div>
-
-    <div id="pergunta-caixa">
-      <p id="numero">Pergunta 1 de 16</p>
-      <p id="pergunta">Carregando...</p>
-      <div id="opcoes"></div>
-      <p id="mensagem"></p>
-      <p id="explicacao"></p>
-    </div>
-
-    <div id="botoes">
-      <button id="btn-conferir">✅ Conferir</button>
-      <button id="btn-proxima">➡️ Próxima</button>
-      <button id="btn-reiniciar">🔄 Reiniciar</button>
-    </div>
-
-  </section>
-
-  <!-- ========== MODO ESTUDAR ========== -->
-  <section id="tela-estudar">
-    <p id="dica-estudo">Clique em um cartão para ver a resposta e entender o conceito 👇</p>
+    <div id="filtros"></div>
     <div id="cartoes"></div>
-  </section>
+  </main>
 
-  <footer>
-    <p>Atividade Avaliativa III — Arquitetura Computacional 💻</p>
-  </footer>
+  <footer>Atividade Avaliativa III · Arquitetura Computacional</footer>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
